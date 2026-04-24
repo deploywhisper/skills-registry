@@ -1,0 +1,30 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Deep Jenkins pipeline safety knowledge covering approval gate analysis, credential exposure patterns, agent security, deployment stage risks, and shared library vulnerabilities.",
+  "license": "MIT",
+  "name": "jenkins",
+  "tags": [
+    "jenkins",
+    "ci-cd",
+    "pipelines"
+  ],
+  "test_suite_path": "tests/skill-tests/jenkins",
+  "token_budget": 1400,
+  "tool": null,
+  "trigger_content_patterns": [
+    "pipeline",
+    "stage",
+    "agent",
+    "steps",
+    "post",
+    "input",
+    "parallel"
+  ],
+  "triggers": [
+    "Jenkinsfile",
+    ".jenkinsfile",
+    "jenkins.groovy"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,25 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Container image and build risk knowledge covering Dockerfile security patterns, image provenance, multi-stage build risks, compose file analysis, and runtime container security.",
+  "license": "MIT",
+  "name": "docker",
+  "tags": [
+    "docker",
+    "containers",
+    "supply-chain"
+  ],
+  "test_suite_path": "tests/skill-tests/docker",
+  "token_budget": 1200,
+  "tool": null,
+  "trigger_content_patterns": [],
+  "triggers": [
+    "Dockerfile",
+    ".dockerfile",
+    "docker-compose.yml",
+    "docker-compose.yaml",
+    "compose.yml",
+    "compose.yaml"
+  ],
+  "version": "1.0.0"
+}

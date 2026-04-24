@@ -1,0 +1,24 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Deep Terraform risk knowledge covering provider-specific patterns, state operations, lifecycle rules, and common failure modes across AWS, GCP, and Azure.",
+  "license": "MIT",
+  "name": "terraform",
+  "tags": [
+    "terraform",
+    "iac",
+    "infrastructure"
+  ],
+  "test_suite_path": "tests/skill-tests/terraform",
+  "token_budget": 1800,
+  "tool": null,
+  "trigger_content_patterns": [],
+  "triggers": [
+    ".tf",
+    ".tfvars",
+    ".tfvars.json",
+    "terraform-plan.json",
+    "tfplan.json"
+  ],
+  "version": "1.0.0"
+}

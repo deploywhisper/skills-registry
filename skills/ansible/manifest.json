@@ -1,0 +1,29 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Deep Ansible operational knowledge covering dangerous module classification, idempotency violations, inventory targeting risks, privilege escalation patterns, and handler ordering pitfalls.",
+  "license": "MIT",
+  "name": "ansible",
+  "tags": [
+    "ansible",
+    "automation",
+    "iac"
+  ],
+  "test_suite_path": "tests/skill-tests/ansible",
+  "token_budget": 1600,
+  "tool": null,
+  "trigger_content_patterns": [
+    "hosts",
+    "tasks",
+    "roles",
+    "become",
+    "ansible",
+    "playbook",
+    "handlers"
+  ],
+  "triggers": [
+    ".yml",
+    ".yaml"
+  ],
+  "version": "1.0.0"
+}
