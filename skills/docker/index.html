@@ -4,29 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>docker | DeployWhisper Skills Registry</title>
+    <link rel="canonical" href="https://deploywhisper.github.io/skills-registry/skills/docker/" />
     <style>
-      body { margin: 0; background: #f5efe8; color: #1f2530; font-family: ui-sans-serif, system-ui, sans-serif; }
-      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
-      .panel { background: rgba(255,255,255,0.92); border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 22px; padding: 24px; margin-bottom: 18px; }
-      h1 { font-size: 2.8rem; margin: 8px 0 14px; }
-      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
-      p, li { line-height: 1.7; color: #4d596b; }
+      :root {
+        --bg: #f5efe8;
+        --panel: rgba(255,255,255,0.93);
+        --line: rgba(77, 89, 107, 0.12);
+        --text: #1f2530;
+        --muted: #4d596b;
+        --muted-soft: #7a8598;
+        --accent: #d96b3d;
+        --accent-soft: rgba(217,107,61,0.12);
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(217,107,61,0.18), transparent 26%),
+          linear-gradient(180deg, #fbf7f1 0%, var(--bg) 48%, #eee6d9 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      main { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; }
+      .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 44px rgba(28,34,44,0.08); }
+      h1 { font-size: clamp(2.7rem, 6vw, 4rem); margin: 8px 0 14px; letter-spacing: -0.05em; }
+      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      h3 { font-size: 1.1rem; margin-top: 18px; }
+      p, li { line-height: 1.7; color: var(--muted); }
       code { display: inline-flex; padding: 10px 12px; border-radius: 12px; background: #121823; color: #edf0f8; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
+      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
       .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-      .tags span { display: inline-flex; border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: #4d596b; }
-      a { color: #d96b3d; text-decoration: none; font-weight: 700; }
+      .tags span, .badge { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.78); }
+      .badge-official { background: var(--accent-soft); border-color: rgba(217,107,61,0.24); color: var(--accent); font-weight: 700; }
+      a { color: var(--accent); text-decoration: none; font-weight: 700; }
+      .command-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .copy-button {
+        border: 1px solid rgba(217,107,61,0.24);
+        border-radius: 14px;
+        padding: 10px 12px;
+        font: inherit;
+        font-weight: 700;
+        color: var(--accent);
+        background: rgba(255,255,255,0.92);
+        cursor: pointer;
+      }
+      .copy-button.copied { color: #0f7d52; border-color: rgba(15,125,82,0.24); }
+      .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+      .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+      .help-grid ol { margin: 0; padding-left: 18px; }
+      .guidance h2 { margin-top: 24px; }
+      .guidance ul { padding-left: 20px; }
     </style>
   </head>
   <body>
     <main>
       <section class="panel">
         <div class="meta">docker</div>
+        <div class="hero-badges"><span class='badge badge-official'>Official</span><span class="badge">v1.0.0</span><span class="badge">1 scenarios</span></div>
         <h1>Docker</h1>
         <p>Container image and build risk knowledge covering Dockerfile security patterns, image provenance, multi-stage build risks, compose file analysis, and runtime container security.</p>
-        <p><code>deploywhisper skill install docker</code></p>
+        <div class="command-row">
+          <code id="install-command">deploywhisper skill install docker</code>
+          <button class="copy-button" id="copy-install">Copy install command</button>
+        </div>
         <p><a href="../../index.html">Back to catalog</a></p>
+      </section>
+      <section class="panel">
+        <h2>How to use this skill</h2>
+        <div class="help-grid">
+          <div>
+            <strong>1. Install it locally</strong>
+            <p>Use the install command above from any DeployWhisper app checkout that has the installer enabled.</p>
+          </div>
+          <div>
+            <strong>2. Run analysis on matching artifacts</strong>
+            <p>This skill activates when files or content patterns below are detected during analysis.</p>
+          </div>
+          <div>
+            <strong>3. Verify behavior</strong>
+            <p>Published registry data currently includes <strong>1</strong> deterministic scenario for this skill.</p>
+          </div>
+        </div>
       </section>
       <section class="panel">
         <h2>Metadata</h2>
@@ -45,6 +103,39 @@
         <h2>Triggers</h2>
         <ul><li>Dockerfile</li><li>.dockerfile</li><li>docker-compose.yml</li><li>docker-compose.yaml</li><li>compose.yml</li><li>compose.yaml</li></ul>
       </section>
+      <section class="panel">
+        <h2>Content patterns</h2>
+        <ul><li>No content pattern hints declared.</li></ul>
+      </section>
+      <section class="panel guidance">
+        <h2>Guidance excerpt</h2>
+        <h2>Dockerfile risk patterns</h2><h3>Running as root (CRITICAL)</h3><ul><li>No `USER` instruction in the Dockerfile = CRITICAL — container runs as root by default; if the container is compromised, the attacker has root-level access within the container and potentially the host (with certain volume mounts or kernel exploits)</li><li>`USER root` set after a non-root USER instruction = HIGH — reverts to root for subsequent layers; common mistake when installing system packages late in the build</li><li>`USER` instruction only in intermediate build stage, not in final runtime stage = CRITICAL — multi-stage build where the builder runs as non-root but the final image runs as root</li></ul><h3>Dangerous instructions (HIGH)</h3><ul><li>`COPY . .` or `ADD . .` without `.dockerignore` = HIGH — copies EVERYTHING from the build context including `.git/`, `.env`, `node_modules/`, credentials files, and local development configs into the image</li><li>`ADD` with remote URL = HIGH — downloads and extracts files from the internet at build time; URL content can change between builds (non-deterministic); use `COPY` + explicit `curl`/`wget` with checksum verification instead</li><li>`RUN chmod 777` on any directory = HIGH — world-writable directories inside the container; any process can modify files</li><li>`RUN apt-get install -y` without `--no-install-recommends` = MEDIUM — installs unnecessary recommended packages, increasing image size and attack surface</li><li>`RUN curl | sh` or `RUN wget -O - | sh` = CRITICAL — executes remote scripts without verification; classic supply chain attack vector; download, verify checksum, then execute as separate steps</li><li>`ENV` with secret values (passwords, tokens, API keys) = CRITICAL — environment variables are baked into the image layer metadata; anyone with image access can extract them with `docker inspect` or `docker history`</li></ul><h3>Unpinned dependencies (HIGH)</h3><ul><li>Base image with `latest` tag: `FROM node:latest` = HIGH — image content changes without notice; builds are non-reproducible; a base image update can break the application silently</li><li>Base image with major version only: `FROM python:3` = MEDIUM — resolves to latest 3.x minor and patch; `FROM python:3.11.9-slim-bookworm` is deterministic</li><li>Base image without digest: prefer `FROM python:3.11.9@sha256:abc123...` = MEDIUM — even pinned tags can be overwritten in registries; digest pinning guarantees exact image content</li><li>`RUN pip install package` without version pin = MEDIUM — installs latest version at build time; breaks when package releases a backward-incompatible update</li><li>`RUN npm install` without `package-lock.json` copied first = MEDIUM — dependency resolution is non-deterministic without lockfile; different builds may get different dependency versions</li><li>`RUN apt-get update &amp;&amp; apt-get install -y package` without version pin = LOW-MEDIUM — acceptable for system packages but note that builds are not perfectly reproducible</li></ul><h3>Layer optimization (LOW-MEDIUM)</h3><ul><li>Separate `RUN apt-get update` and `RUN apt-get install` = MEDIUM — if the install layer is cached but update is not, the cache uses a stale package index; always combine: `RUN apt-get update &amp;&amp; apt-get install -y ... &amp;&amp; rm -rf /var/lib/apt/lists/*`</li><li>Package manager cache not cleaned in the same RUN instruction = LOW — increases image size unnecessarily; cache files persist in the layer</li><li>`COPY` of large directories before `COPY` of dependency lockfiles = MEDIUM — invalidates Docker layer cache on every source code change; copy lockfiles first, install dependencies, then copy source code</li><li>More than 15 layers in the final image = LOW — excessive layers increase pull time and storage; combine related RUN instructions</li></ul><h2>Image provenance</h2><h3>Registry trust (HIGH)</h3><ul><li>Image from Docker Hub without official or verified publisher status = MEDIUM — community images may contain malware, crypto miners, or backdoors; prefer official images or your organization&#x27;s private registry</li><li>Image from a public registry not in the organization&#x27;s approved list = HIGH — supply chain risk; all base images should come from a curated allowlist</li><li>Image without a vulnerability scan report = MEDIUM — use `docker scout`, `trivy`, or `grype` to scan before deployment</li><li>Image with known CRITICAL CVEs in scan results = HIGH — vulnerabilities in base image or installed packages</li></ul><h3>Image signing and verification</h3><ul><li>Images not signed with Docker Content Trust or Cosign/Sigstore = MEDIUM — no guarantee the image wasn&#x27;t tampered with between build and deployment</li><li>Image pulled by tag (not digest) in production K8s manifests = MEDIUM — tag can be overwritten in the registry; use `image@sha256:...` for immutable references</li><li>Multi-arch image used without specifying platform = LOW — Docker selects the platform automatically, but behavior may vary between build environments (CI vs local development)</li></ul><h2>Multi-stage build risks</h2><h3>Secret leakage between stages (CRITICAL)</h3><ul><li>`COPY --from=builder /app/.env /app/.env` = CRITICAL — copies secrets from build stage into runtime image; secrets that should only exist during build (npm tokens, pip credentials) end up in the final image</li><li>Build arguments (`ARG`) with secret values without using `--mount=type=secret` = HIGH — ARG values are visible in image layer metadata; use BuildKit secrets mount: `RUN --mount=type=secret,id=npm,target=/root/.npmrc npm install`</li><li>`COPY --from=builder /root/.aws /root/.aws` = CRITICAL — AWS credentials from builder stage leaked into runtime image</li></ul><h3>Stage dependency issues</h3><ul><li>Final stage `COPY --from=builder` missing critical runtime files = causes runtime failure (not a security risk but a reliability risk)</li><li>Final stage inheriting a different base image than expected — `FROM node:slim` (runtime) vs `FROM node:latest` (build); native dependencies compiled in build stage may not work on slim runtime (missing shared libraries)</li><li>Build stage with `RUN npm run build` but missing build artifacts in COPY = build succeeds but deployed image is broken</li></ul><h2>Docker Compose analysis</h2><h3>Security risks in Compose (HIGH)</h3><ul><li>`privileged: true` on any service = CRITICAL — container gets full access to host kernel; equivalent to running as root on the host machine</li><li>`network_mode: host` = HIGH — container shares the host&#x27;s network namespace; can bind to any host port and see all network traffic</li><li>`pid: host` = HIGH — container can see all host processes; combined with `privileged`, allows container escape</li><li>`volumes` mounting sensitive host paths:</li><li>`/var/run/docker.sock:/var/run/docker.sock` = CRITICAL — container can control the Docker daemon; can spawn new privileged containers, access any volume, and effectively has root on the host</li><li>`/etc/shadow`, `/etc/passwd` = CRITICAL — host authentication files exposed</li><li>`/` or `/root` = CRITICAL — entire host filesystem or root home directory accessible</li><li>`/var/log` = MEDIUM — host logs may contain sensitive information</li><li>`cap_add: [SYS_ADMIN]` or `cap_add: [ALL]` = HIGH — Linux capabilities that approach root-level access</li></ul><h3>Configuration risks (MEDIUM)</h3><ul><li>`restart: always` without health check = MEDIUM — container restarts indefinitely even if the application is broken; combine with `healthcheck` to prevent restart loops</li><li>`ports` exposing database or cache ports to the host (3306, 5432, 6379, 27017) = HIGH — database accessible from the host network; should use internal Docker networking only</li><li>`environment` section with inline secrets instead of `secrets` or `.env` file reference = HIGH — secrets visible in `docker compose config` output and in the compose file in version control</li><li>Missing `mem_limit` or `deploy.resources.limits.memory` = MEDIUM — container can consume all host memory; always set memory limits in production</li><li>`depends_on` without `condition: service_healthy` = MEDIUM — dependent service starts before dependency is ready; only checks that the container started, not that the application inside is healthy</li></ul><h3>Networking risks</h3><ul><li>Services on the default bridge network in production = MEDIUM — all containers can communicate with each other; use custom networks to isolate services</li><li>`expose` without corresponding `ports` = informational — container port is documented but not published to host; not a risk, but verify it&#x27;s intentional</li><li>Multiple services binding to the same host port = will fail at startup — `ports: &quot;8080:80&quot;` on two services causes port conflict; use different host ports or a reverse proxy</li></ul><h2>Runtime container security</h2><h3>Volume and data risks</h3><ul><li>Named volume removed from compose file = HIGH — data in the volume persists on the host but is no longer managed by compose; orphaned data</li><li>Anonymous volumes (no name specified) = MEDIUM — data is lost when the container is recreated; not suitable for persistent data</li><li>`tmpfs` mount for `/tmp` = positive — prevents temporary file persistence; good security practice</li><li>Volume mount with `:rw` (default) when `:ro` would suffice = LOW — principle of least privilege; read-only mounts reduce the risk of container writing to host filesystem</li></ul><h3>Container lifecycle</h3><ul><li>`stop_grace_period` too short (&lt; 10s) for services with in-flight requests = MEDIUM — application may not finish processing requests before SIGKILL; default 10s is usually sufficient but increase for long-running operations</li><li>No `logging` driver configuration = LOW — defaults to `json-file` which can fill disk; configure `max-size` and `max-file` options or use a centralized logging driver</li><li>`init: true` not set for services that spawn child processes = MEDIUM — zombie processes accumulate; `init: true` adds a tiny init system that reaps child processes properly</li></ul><h2>Dockerfile change risk assessment</h2><p>| Change type | Risk level | Rationale |</p><p>|---|---|---|</p><p>| Base image tag change | HIGH | New OS, new packages, new vulnerabilities, potential breaking changes |</p><p>| Base image digest change | MEDIUM | Controlled update, but content changes |</p><p>| USER instruction added/changed | HIGH | Affects permission model for all subsequent instructions |</p><p>| EXPOSE port change | MEDIUM | May require corresponding K8s service/ingress update |</p><p>| COPY/ADD source path change | MEDIUM | Different files included in image |</p><p>| RUN with package install | MEDIUM | New dependencies, new attack surface |</p><p>| ENV change | LOW-HIGH | Depends on variable (PORT vs SECRET) |</p><p>| ENTRYPOINT/CMD change | HIGH | Changes how the container starts; wrong entrypoint = broken container |</p><p>| HEALTHCHECK change | MEDIUM | Affects readiness detection in orchestrators |</p><p>| .dockerignore change | MEDIUM | Affects what enters the build context |</p>
+      </section>
     </main>
+    <script>
+      (() => {
+        if (window.location.pathname.endsWith('/index.html')) {
+          const cleanPath = window.location.pathname.replace(/index\.html$/, '');
+          window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
+        const button = document.getElementById('copy-install');
+        const command = document.getElementById('install-command');
+        if (button && command) {
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(command.textContent || '');
+              button.textContent = 'Copied';
+              button.classList.add('copied');
+            } catch (error) {
+              button.textContent = 'Copy failed';
+            }
+            window.setTimeout(() => {
+              button.textContent = 'Copy install command';
+              button.classList.remove('copied');
+            }, 1500);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

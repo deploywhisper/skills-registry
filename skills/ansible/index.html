@@ -4,29 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ansible | DeployWhisper Skills Registry</title>
+    <link rel="canonical" href="https://deploywhisper.github.io/skills-registry/skills/ansible/" />
     <style>
-      body { margin: 0; background: #f5efe8; color: #1f2530; font-family: ui-sans-serif, system-ui, sans-serif; }
-      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
-      .panel { background: rgba(255,255,255,0.92); border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 22px; padding: 24px; margin-bottom: 18px; }
-      h1 { font-size: 2.8rem; margin: 8px 0 14px; }
-      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
-      p, li { line-height: 1.7; color: #4d596b; }
+      :root {
+        --bg: #f5efe8;
+        --panel: rgba(255,255,255,0.93);
+        --line: rgba(77, 89, 107, 0.12);
+        --text: #1f2530;
+        --muted: #4d596b;
+        --muted-soft: #7a8598;
+        --accent: #d96b3d;
+        --accent-soft: rgba(217,107,61,0.12);
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(217,107,61,0.18), transparent 26%),
+          linear-gradient(180deg, #fbf7f1 0%, var(--bg) 48%, #eee6d9 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      main { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; }
+      .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 44px rgba(28,34,44,0.08); }
+      h1 { font-size: clamp(2.7rem, 6vw, 4rem); margin: 8px 0 14px; letter-spacing: -0.05em; }
+      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      h3 { font-size: 1.1rem; margin-top: 18px; }
+      p, li { line-height: 1.7; color: var(--muted); }
       code { display: inline-flex; padding: 10px 12px; border-radius: 12px; background: #121823; color: #edf0f8; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
+      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
       .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-      .tags span { display: inline-flex; border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: #4d596b; }
-      a { color: #d96b3d; text-decoration: none; font-weight: 700; }
+      .tags span, .badge { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.78); }
+      .badge-official { background: var(--accent-soft); border-color: rgba(217,107,61,0.24); color: var(--accent); font-weight: 700; }
+      a { color: var(--accent); text-decoration: none; font-weight: 700; }
+      .command-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .copy-button {
+        border: 1px solid rgba(217,107,61,0.24);
+        border-radius: 14px;
+        padding: 10px 12px;
+        font: inherit;
+        font-weight: 700;
+        color: var(--accent);
+        background: rgba(255,255,255,0.92);
+        cursor: pointer;
+      }
+      .copy-button.copied { color: #0f7d52; border-color: rgba(15,125,82,0.24); }
+      .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+      .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+      .help-grid ol { margin: 0; padding-left: 18px; }
+      .guidance h2 { margin-top: 24px; }
+      .guidance ul { padding-left: 20px; }
     </style>
   </head>
   <body>
     <main>
       <section class="panel">
         <div class="meta">ansible</div>
+        <div class="hero-badges"><span class='badge badge-official'>Official</span><span class="badge">v1.0.0</span><span class="badge">1 scenarios</span></div>
         <h1>Ansible</h1>
         <p>Deep Ansible operational knowledge covering dangerous module classification, idempotency violations, inventory targeting risks, privilege escalation patterns, and handler ordering pitfalls.</p>
-        <p><code>deploywhisper skill install ansible</code></p>
+        <div class="command-row">
+          <code id="install-command">deploywhisper skill install ansible</code>
+          <button class="copy-button" id="copy-install">Copy install command</button>
+        </div>
         <p><a href="../../index.html">Back to catalog</a></p>
+      </section>
+      <section class="panel">
+        <h2>How to use this skill</h2>
+        <div class="help-grid">
+          <div>
+            <strong>1. Install it locally</strong>
+            <p>Use the install command above from any DeployWhisper app checkout that has the installer enabled.</p>
+          </div>
+          <div>
+            <strong>2. Run analysis on matching artifacts</strong>
+            <p>This skill activates when files or content patterns below are detected during analysis.</p>
+          </div>
+          <div>
+            <strong>3. Verify behavior</strong>
+            <p>Published registry data currently includes <strong>1</strong> deterministic scenario for this skill.</p>
+          </div>
+        </div>
       </section>
       <section class="panel">
         <h2>Metadata</h2>
@@ -45,6 +103,39 @@
         <h2>Triggers</h2>
         <ul><li>.yml</li><li>.yaml</li></ul>
       </section>
+      <section class="panel">
+        <h2>Content patterns</h2>
+        <ul><li>hosts</li><li>tasks</li><li>roles</li><li>become</li><li>ansible</li><li>playbook</li><li>handlers</li></ul>
+      </section>
+      <section class="panel guidance">
+        <h2>Guidance excerpt</h2>
+        <h2>Dangerous module classification</h2><h3>Destructive modules (CRITICAL)</h3><ul><li>`file` with `state: absent` — deletes files or entire directory trees; recursive deletion on wrong path is catastrophic</li><li>`user` with `state: absent` and `remove: true` — deletes user account AND home directory with all data</li><li>`mysql_db` / `postgresql_db` with `state: absent` — drops the database; irreversible without backup</li><li>`ec2_instance` / `gce_instance` with `state: absent` — terminates cloud instances</li><li>`docker_container` with `state: absent` and `keep_volumes: false` — destroys container AND its data volumes</li><li>`k8s` with `state: absent` — deletes Kubernetes resources; can cascade through owner references</li></ul><h3>Non-idempotent modules (HIGH)</h3><ul><li>`command` — executes arbitrary shell commands; has no built-in idempotency; runs every time regardless of current state</li><li>`shell` — same as command but through a shell interpreter; even more dangerous because of pipe/redirect side effects</li><li>`raw` — sends raw commands over SSH without module wrapper; no change detection, no error handling, no idempotency</li><li>`script` — uploads and executes a local script on remote host; runs every time, no state check</li><li>`expect` — automates interactive commands; inherently non-idempotent and fragile</li></ul><h3>Sensitive modules (HIGH)</h3><ul><li>`copy` with `content` parameter containing secrets — secrets end up in Ansible logs, facts cache, and potentially in version control</li><li>`template` rendering credential files — verify `mode: &#x27;0600&#x27;` and `owner` are set; world-readable credential files are a common oversight</li><li>`lineinfile` / `blockinfile` — modifies files in place; repeated runs with wrong `regexp` can duplicate lines or corrupt config files</li><li>`cron` — installs cron jobs; missing `name` parameter causes duplicate entries on every run</li><li>`authorized_key` with `exclusive: true` — removes ALL other SSH keys for the user; can lock out other admins</li></ul><h3>Safe modules (LOW risk when used correctly)</h3><ul><li>`apt` / `yum` / `dnf` with `state: present` — idempotent package installation</li><li>`service` / `systemd` with `state: started/stopped` — idempotent service management</li><li>`file` with `state: directory` or `state: file` — idempotent file/directory creation</li><li>`template` / `copy` with `backup: yes` — creates backup before overwriting</li></ul><h2>Idempotency violations</h2><h3>Common anti-patterns</h3><ul><li>`command` or `shell` without `creates` or `removes` guards — runs every time; use `creates: /path/to/output` to skip if file already exists</li><li>`command` or `shell` without `changed_when` — always reports &quot;changed&quot; even if the command was a no-op; misleads operators about actual system state</li><li>`shell: &quot;echo &#x27;line&#x27; &gt;&gt; /etc/config&quot;` — appends the line on EVERY run; use `lineinfile` instead for idempotent file editing</li><li>Task using `register` result but no conditional on next task — downstream tasks always execute regardless of whether the registered command did anything</li><li>`when: result.rc == 0` after a `command` that always succeeds — the conditional provides no useful gating</li></ul><h3>Missing guard patterns</h3><ul><li>Tasks that should use `when: ansible_facts[&#x27;os_family&#x27;] == &#x27;Debian&#x27;` but apply universally — OS-specific commands break on wrong distribution</li><li>Package installation without version pinning — `apt: name=nginx` installs whatever the latest version is; use `name=nginx=1.24.0-1` for deterministic deployments</li><li>Tasks that check `stat` for file existence but don&#x27;t use `register` + `when` to gate subsequent steps</li></ul><h2>Inventory targeting risks</h2><h3>Production targeting (CRITICAL)</h3><ul><li>Play with `hosts: all` = CRITICAL — targets every host in the inventory; in mixed environments this includes production, staging, dev, and infrastructure hosts simultaneously</li><li>Play targeting production group without `--limit` in CI/CD = HIGH — no guardrail against running on all production servers</li><li>Play targeting parent group that contains production subgroup = HIGH — `hosts: webservers` may include `prod-webservers` and `staging-webservers`</li><li>`serial: 100%` or no `serial` on production group = HIGH — all hosts process simultaneously; a bad task takes down every server at once</li><li>Missing `max_fail_percentage` — one host failure doesn&#x27;t stop the play from destroying remaining hosts</li></ul><h3>Safe targeting patterns</h3><ul><li>`serial: 1` or `serial: &quot;25%&quot;` for production — processes hosts in batches; limits blast radius of a bad change</li><li>`max_fail_percentage: 10` — stops the play if more than 10% of hosts fail; prevents cascading failure</li><li>`any_errors_fatal: true` for critical tasks — stops ALL hosts on the first error anywhere</li><li>`run_once: true` for tasks that should only execute on one host (database migrations, cluster operations)</li></ul><h2>Privilege escalation patterns</h2><h3>Dangerous escalation (HIGH)</h3><ul><li>`become: true` at play level without `become_user` — escalates to root for EVERY task in the play, including tasks that don&#x27;t need root</li><li>Tasks modifying `/etc/sudoers` or `/etc/sudoers.d/` — syntax error in sudoers file locks out ALL sudo access; always use `visudo --check` or `validate` parameter</li><li>Tasks modifying PAM configuration (`/etc/pam.d/`) — misconfiguration can lock out all logins, including SSH</li><li>Tasks modifying SSH configuration (`/etc/ssh/sshd_config`) without `validate: &#x27;sshd -t -f %s&#x27;` — syntax error locks out SSH access permanently on next restart</li><li>Tasks modifying firewall rules (`iptables`, `ufw`, `firewalld`) without ensuring SSH port remains open — can lock out Ansible itself</li></ul><h3>Best practices</h3><ul><li>Use `become: true` at task level, not play level — only escalate when needed</li><li>Always use `validate` parameter on critical config files: `validate: &#x27;nginx -t -c %s&#x27;`, `validate: &#x27;sshd -t -f %s&#x27;`, `validate: &#x27;visudo -cf %s&#x27;`</li><li>Use `backup: yes` on critical file modifications — creates timestamped backup before overwriting</li></ul><h2>Variable precedence risks</h2><h3>Precedence conflicts (MEDIUM)</h3><ul><li>`extra-vars` (-e) always win over everything — can silently override role defaults, group_vars, and host_vars without warning</li><li>`group_vars/all` overriding role defaults unexpectedly — role developers expect their defaults to apply unless explicitly overridden</li><li>Multiple group memberships causing variable merging conflicts — host in both `webservers` and `production` groups may get conflicting variable values depending on group file ordering</li><li>`set_fact` overriding variables mid-play — subsequent tasks get the new value, but handlers still see the original value</li><li>`include_vars` with `hash_behaviour: merge` vs `replace` — merge combines dictionaries, replace overwrites entirely; default is replace, which can lose nested keys</li></ul><h3>Variable safety</h3><ul><li>Sensitive variables (`passwords`, `api_keys`, `tokens`) should be in `ansible-vault` encrypted files, not plain text group_vars</li><li>Variables with `no_log: true` on tasks that handle secrets — prevents secret values from appearing in Ansible output and logs</li><li>`default()` filter on optional variables — prevents `undefined variable` errors from crashing the play</li></ul><h2>Handler ordering risks</h2><h3>Handler pitfalls (MEDIUM)</h3><ul><li>Handlers execute in DEFINITION order, not notification order — if handler A is defined after handler B but notified first, B still runs before A</li><li>Multiple tasks notifying the same handler — handler runs only ONCE at the end of the block, not once per notification; this is usually desired but can surprise operators</li><li>`flush_handlers` in the middle of a play — forces all pending handlers to execute immediately; if a handler fails, subsequent tasks in the play still run (handlers don&#x27;t block play execution by default)</li><li>Handler that restarts a service while a health check task follows immediately — the service may not be ready when the health check runs; add a `wait_for` task after flush</li><li>Handlers in included roles — handler names must be globally unique across all roles; duplicate names cause only one handler to execute</li></ul><h3>Block error handling</h3><ul><li>`rescue` block only catches task failures, not handler failures — a failing handler in a `block` is NOT caught by `rescue`</li><li>`always` block runs regardless of task or rescue outcome — use for cleanup that must happen (remove temp files, restore config)</li><li>Nested blocks with error handling — inner rescue can mask errors from outer block; keep nesting shallow</li></ul><h2>Ansible-specific failure modes</h2><ul><li>SSH connection timeout on large inventories — default `forks: 5` means only 5 hosts processed in parallel; increase for large inventories but watch for connection storms</li><li>`gather_facts: true` (default) adds 5-15 seconds per host — disable with `gather_facts: false` when facts aren&#x27;t needed; use `setup` module selectively for specific fact subsets</li><li>Ansible control node running out of memory on very large inventories (&gt;1000 hosts) — each host fork uses 50-100MB; limit forks or use `mitogen` strategy for lower memory footprint</li><li>Python version mismatch between control node and target — Ansible requires Python on target hosts; Python 2 EOL means some modules behave differently on legacy hosts</li><li>`ansible.cfg` in current directory overriding system config — CI/CD runners may pick up unexpected config from repo checkout</li></ul>
+      </section>
     </main>
+    <script>
+      (() => {
+        if (window.location.pathname.endsWith('/index.html')) {
+          const cleanPath = window.location.pathname.replace(/index\.html$/, '');
+          window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
+        const button = document.getElementById('copy-install');
+        const command = document.getElementById('install-command');
+        if (button && command) {
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(command.textContent || '');
+              button.textContent = 'Copied';
+              button.classList.add('copied');
+            } catch (error) {
+              button.textContent = 'Copy failed';
+            }
+            window.setTimeout(() => {
+              button.textContent = 'Copy install command';
+              button.classList.remove('copied');
+            }, 1500);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

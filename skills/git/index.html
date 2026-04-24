@@ -4,29 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>git | DeployWhisper Skills Registry</title>
+    <link rel="canonical" href="https://deploywhisper.github.io/skills-registry/skills/git/" />
     <style>
-      body { margin: 0; background: #f5efe8; color: #1f2530; font-family: ui-sans-serif, system-ui, sans-serif; }
-      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
-      .panel { background: rgba(255,255,255,0.92); border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 22px; padding: 24px; margin-bottom: 18px; }
-      h1 { font-size: 2.8rem; margin: 8px 0 14px; }
-      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
-      p, li { line-height: 1.7; color: #4d596b; }
+      :root {
+        --bg: #f5efe8;
+        --panel: rgba(255,255,255,0.93);
+        --line: rgba(77, 89, 107, 0.12);
+        --text: #1f2530;
+        --muted: #4d596b;
+        --muted-soft: #7a8598;
+        --accent: #d96b3d;
+        --accent-soft: rgba(217,107,61,0.12);
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(217,107,61,0.18), transparent 26%),
+          linear-gradient(180deg, #fbf7f1 0%, var(--bg) 48%, #eee6d9 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      main { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; }
+      .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 44px rgba(28,34,44,0.08); }
+      h1 { font-size: clamp(2.7rem, 6vw, 4rem); margin: 8px 0 14px; letter-spacing: -0.05em; }
+      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      h3 { font-size: 1.1rem; margin-top: 18px; }
+      p, li { line-height: 1.7; color: var(--muted); }
       code { display: inline-flex; padding: 10px 12px; border-radius: 12px; background: #121823; color: #edf0f8; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
+      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
       .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-      .tags span { display: inline-flex; border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: #4d596b; }
-      a { color: #d96b3d; text-decoration: none; font-weight: 700; }
+      .tags span, .badge { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.78); }
+      .badge-official { background: var(--accent-soft); border-color: rgba(217,107,61,0.24); color: var(--accent); font-weight: 700; }
+      a { color: var(--accent); text-decoration: none; font-weight: 700; }
+      .command-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .copy-button {
+        border: 1px solid rgba(217,107,61,0.24);
+        border-radius: 14px;
+        padding: 10px 12px;
+        font: inherit;
+        font-weight: 700;
+        color: var(--accent);
+        background: rgba(255,255,255,0.92);
+        cursor: pointer;
+      }
+      .copy-button.copied { color: #0f7d52; border-color: rgba(15,125,82,0.24); }
+      .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+      .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+      .help-grid ol { margin: 0; padding-left: 18px; }
+      .guidance h2 { margin-top: 24px; }
+      .guidance ul { padding-left: 20px; }
     </style>
   </head>
   <body>
     <main>
       <section class="panel">
         <div class="meta">git</div>
+        <div class="hero-badges"><span class='badge badge-official'>Official</span><span class="badge">v1.0.0</span><span class="badge">1 scenarios</span></div>
         <h1>Git</h1>
         <p>Git-based change context intelligence covering commit analysis, sensitive file detection, branch risk signals, author patterns, and co-change analysis. This skill is always loaded because Git context enriches every other tool's analysis.</p>
-        <p><code>deploywhisper skill install git</code></p>
+        <div class="command-row">
+          <code id="install-command">deploywhisper skill install git</code>
+          <button class="copy-button" id="copy-install">Copy install command</button>
+        </div>
         <p><a href="../../index.html">Back to catalog</a></p>
+      </section>
+      <section class="panel">
+        <h2>How to use this skill</h2>
+        <div class="help-grid">
+          <div>
+            <strong>1. Install it locally</strong>
+            <p>Use the install command above from any DeployWhisper app checkout that has the installer enabled.</p>
+          </div>
+          <div>
+            <strong>2. Run analysis on matching artifacts</strong>
+            <p>This skill activates when files or content patterns below are detected during analysis.</p>
+          </div>
+          <div>
+            <strong>3. Verify behavior</strong>
+            <p>Published registry data currently includes <strong>1</strong> deterministic scenario for this skill.</p>
+          </div>
+        </div>
       </section>
       <section class="panel">
         <h2>Metadata</h2>
@@ -45,6 +103,39 @@
         <h2>Triggers</h2>
         <ul><li>.diff</li><li>.patch</li><li>.gitdiff</li></ul>
       </section>
+      <section class="panel">
+        <h2>Content patterns</h2>
+        <ul><li>No content pattern hints declared.</li></ul>
+      </section>
+      <section class="panel guidance">
+        <h2>Guidance excerpt</h2>
+        <h2>Sensitive file detection</h2><h3>Auto-block from LLM transmission (CRITICAL)</h3><p>These file patterns must NEVER be sent to external LLM providers. If detected in uploaded files, exclude content from LLM payload and display a prominent warning to the user.</p><ul><li>`.env`, `.env.local`, `.env.production`, `.env.*` — environment variables often contain API keys, database credentials, and secrets</li><li>`*.pem`, `*.key`, `*.crt`, `*.p12`, `*.pfx` — TLS certificates and private keys</li><li>`id_rsa`, `id_ed25519`, `id_ecdsa`, `*.pub` (private key counterparts) — SSH keys</li><li>`kubeconfig`, `.kube/config`, `kube.config` — Kubernetes cluster credentials with admin access</li><li>`credentials`, `credentials.json`, `credentials.xml` — generic credential stores</li><li>`*.tfstate`, `*.tfstate.backup` — Terraform state files contain every resource attribute including passwords, connection strings, and private IPs</li><li>`terraform.tfvars` containing `password`, `secret`, `token`, `key` variables — inspect variable names, not just filename</li><li>`aws_credentials`, `.aws/credentials`, `.aws/config` — AWS access keys and session tokens</li><li>`gcloud-service-account*.json`, `*-sa-key.json` — GCP service account keys</li><li>`.npmrc`, `.pypirc` with auth tokens — package registry credentials</li><li>`vault-token`, `.vault-token`, `vault.json` — HashiCorp Vault access tokens</li><li>`docker-compose*.yml` with `environment` sections containing hardcoded secrets</li></ul><h3>Sensitive content patterns (HIGH)</h3><p>Even in non-sensitive filenames, flag if content contains:</p><ul><li>Strings matching `AKIA[0-9A-Z]{16}` — AWS access key ID pattern</li><li>Strings matching `ghp_[a-zA-Z0-9]{36}` — GitHub personal access token</li><li>Strings matching `sk-[a-zA-Z0-9]{48}` — OpenAI API key pattern</li><li>Strings matching `xox[bpors]-[a-zA-Z0-9-]+` — Slack token pattern</li><li>Variables named `password`, `secret`, `token`, `api_key`, `apikey`, `access_key`, `private_key` with string literal values</li><li>Base64-encoded blocks longer than 100 characters in YAML/JSON values — may be encoded credentials</li></ul><h2>Commit context analysis</h2><h3>Commit message signals (MEDIUM)</h3><ul><li>Commit message containing `hotfix`, `urgent`, `emergency`, `ASAP`, `quick fix` = MEDIUM — rushed changes are more likely to have errors; flag for extra review attention</li><li>Commit message containing `revert`, `rollback`, `undo` = informational — indicates a previous change caused problems; the original change and this revert should be understood together</li><li>Commit message referencing a ticket/issue (e.g., `JIRA-1234`, `#456`, `fixes #789`) = positive signal — change is tracked and has context</li><li>Commit message with no ticket reference on infrastructure files = MEDIUM — untracked infrastructure change; may bypass change management process</li><li>Very short commit messages (`fix`, `update`, `test`, `wip`) on production infrastructure files = MEDIUM — suggests the change wasn&#x27;t carefully considered</li><li>Commit message mentioning `temporary`, `hack`, `workaround`, `TODO` = MEDIUM — indicates technical debt being introduced intentionally</li></ul><h3>Change magnitude signals</h3><ul><li>Single commit touching more than 10 infrastructure files = HIGH — large blast radius change; should be broken into smaller, reviewable chunks</li><li>Single commit mixing infrastructure changes with application code changes = MEDIUM — infrastructure and application should be deployed independently; coupled changes increase rollback complexity</li><li>Commit with more lines deleted than added in infrastructure files = informational — net reduction in infrastructure; verify nothing critical was removed</li><li>Empty commit or merge commit with no diff = informational — may be a pipeline trigger or branch synchronization; no analysis needed</li></ul><h2>Branch risk signals</h2><h3>Deployment source risks (HIGH)</h3><ul><li>Deploying from a branch other than `main`, `master`, or `release/*` = HIGH — non-standard deployment source; may contain unreviewed or in-progress changes</li><li>Deploying from a branch with `force-push` in its recent history = CRITICAL — force-push rewrites history; commits may have been removed or altered without review; the deployment artifact may not match what was code-reviewed</li><li>Deploying from a branch that is behind `main` by more than 20 commits = MEDIUM — stale branch; infrastructure may have changed significantly since the branch was created; merge conflicts or missing dependencies are likely</li><li>Deploying from a branch with unresolved merge conflict markers (`&lt;&lt;&lt;&lt;&lt;&lt;&lt;`, `=======`, `&gt;&gt;&gt;&gt;&gt;&gt;&gt;`) = CRITICAL — conflict markers in YAML or HCL files cause parse failures; in some cases they may be silently ignored by lenient parsers, creating malformed infrastructure</li></ul><h3>Branch hygiene signals</h3><ul><li>Branch name containing `experiment`, `test`, `poc`, `spike` = HIGH if deploying to production — these branch names indicate exploratory work that shouldn&#x27;t reach production</li><li>Multiple unreviewed commits on the branch = MEDIUM — changes may not have been peer-reviewed; especially risky for infrastructure modifications</li><li>Branch with no associated pull request = MEDIUM — bypasses the code review process; direct pushes to deploy branches should require justification</li></ul><h2>Author risk signals</h2><h3>Author context (MEDIUM)</h3><ul><li>First-time contributor to infrastructure files = HIGH — new to the IaC codebase; changes deserve extra review attention regardless of the contributor&#x27;s seniority</li><li>Changes to infrastructure files by an author who primarily commits application code = MEDIUM — infrastructure requires different expertise; application developers may not understand Terraform state implications or K8s resource management nuances</li><li>Commits outside normal working hours (22:00-06:00 local time) on non-incident branches = MEDIUM — late-night changes correlate with higher error rates; not a hard rule but worth flagging</li><li>Multiple authors modifying the same infrastructure file in the same PR = informational — indicates collaborative infrastructure change; verify changes don&#x27;t conflict</li></ul><h3>Review status</h3><ul><li>PR with zero approvals deploying to production = HIGH — no peer review on infrastructure change</li><li>PR with approvals from team members who don&#x27;t own the affected infrastructure = MEDIUM — approval may lack domain expertise</li><li>PR approved more than 5 days ago without re-approval = MEDIUM — infrastructure context may have changed since the review; consider re-review</li></ul><h2>Co-change analysis</h2><h3>Missing co-changes (HIGH)</h3><ul><li>Terraform security group change without corresponding application configuration change = informational — new ports opened may need application config to use them</li><li>Kubernetes deployment image change without ConfigMap or Secret update = informational — new application version may expect new configuration</li><li>Ansible role update without inventory change = informational — new role variables may need inventory-level overrides</li><li>Jenkinsfile deploy stage change without corresponding infrastructure change = informational — deployment process changed but infrastructure target is the same; verify compatibility</li><li>Dockerfile base image change without Kubernetes resource limit update = MEDIUM — new base image may have different memory/CPU footprint; resource limits may need adjustment</li></ul><h3>Historical co-change patterns</h3><ul><li>Files that historically change together (detected from git log) but only one is present in the current changeset = MEDIUM — potential missing co-change; common example: Terraform module source changed but module variable file not updated</li><li>Infrastructure files that always change in pairs (e.g., `main.tf` and `variables.tf`) but only one is modified = LOW — may indicate incomplete change</li></ul>
+      </section>
     </main>
+    <script>
+      (() => {
+        if (window.location.pathname.endsWith('/index.html')) {
+          const cleanPath = window.location.pathname.replace(/index\.html$/, '');
+          window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
+        const button = document.getElementById('copy-install');
+        const command = document.getElementById('install-command');
+        if (button && command) {
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(command.textContent || '');
+              button.textContent = 'Copied';
+              button.classList.add('copied');
+            } catch (error) {
+              button.textContent = 'Copy failed';
+            }
+            window.setTimeout(() => {
+              button.textContent = 'Copy install command';
+              button.classList.remove('copied');
+            }, 1500);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

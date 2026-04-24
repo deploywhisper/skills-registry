@@ -4,29 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>terraform | DeployWhisper Skills Registry</title>
+    <link rel="canonical" href="https://deploywhisper.github.io/skills-registry/skills/terraform/" />
     <style>
-      body { margin: 0; background: #f5efe8; color: #1f2530; font-family: ui-sans-serif, system-ui, sans-serif; }
-      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
-      .panel { background: rgba(255,255,255,0.92); border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 22px; padding: 24px; margin-bottom: 18px; }
-      h1 { font-size: 2.8rem; margin: 8px 0 14px; }
-      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
-      p, li { line-height: 1.7; color: #4d596b; }
+      :root {
+        --bg: #f5efe8;
+        --panel: rgba(255,255,255,0.93);
+        --line: rgba(77, 89, 107, 0.12);
+        --text: #1f2530;
+        --muted: #4d596b;
+        --muted-soft: #7a8598;
+        --accent: #d96b3d;
+        --accent-soft: rgba(217,107,61,0.12);
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(217,107,61,0.18), transparent 26%),
+          linear-gradient(180deg, #fbf7f1 0%, var(--bg) 48%, #eee6d9 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      main { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; }
+      .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 44px rgba(28,34,44,0.08); }
+      h1 { font-size: clamp(2.7rem, 6vw, 4rem); margin: 8px 0 14px; letter-spacing: -0.05em; }
+      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      h3 { font-size: 1.1rem; margin-top: 18px; }
+      p, li { line-height: 1.7; color: var(--muted); }
       code { display: inline-flex; padding: 10px 12px; border-radius: 12px; background: #121823; color: #edf0f8; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
+      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
       .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-      .tags span { display: inline-flex; border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: #4d596b; }
-      a { color: #d96b3d; text-decoration: none; font-weight: 700; }
+      .tags span, .badge { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.78); }
+      .badge-official { background: var(--accent-soft); border-color: rgba(217,107,61,0.24); color: var(--accent); font-weight: 700; }
+      a { color: var(--accent); text-decoration: none; font-weight: 700; }
+      .command-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .copy-button {
+        border: 1px solid rgba(217,107,61,0.24);
+        border-radius: 14px;
+        padding: 10px 12px;
+        font: inherit;
+        font-weight: 700;
+        color: var(--accent);
+        background: rgba(255,255,255,0.92);
+        cursor: pointer;
+      }
+      .copy-button.copied { color: #0f7d52; border-color: rgba(15,125,82,0.24); }
+      .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+      .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+      .help-grid ol { margin: 0; padding-left: 18px; }
+      .guidance h2 { margin-top: 24px; }
+      .guidance ul { padding-left: 20px; }
     </style>
   </head>
   <body>
     <main>
       <section class="panel">
         <div class="meta">terraform</div>
+        <div class="hero-badges"><span class='badge badge-official'>Official</span><span class="badge">v1.0.0</span><span class="badge">1 scenarios</span></div>
         <h1>Terraform</h1>
         <p>Deep Terraform risk knowledge covering provider-specific patterns, state operations, lifecycle rules, and common failure modes across AWS, GCP, and Azure.</p>
-        <p><code>deploywhisper skill install terraform</code></p>
+        <div class="command-row">
+          <code id="install-command">deploywhisper skill install terraform</code>
+          <button class="copy-button" id="copy-install">Copy install command</button>
+        </div>
         <p><a href="../../index.html">Back to catalog</a></p>
+      </section>
+      <section class="panel">
+        <h2>How to use this skill</h2>
+        <div class="help-grid">
+          <div>
+            <strong>1. Install it locally</strong>
+            <p>Use the install command above from any DeployWhisper app checkout that has the installer enabled.</p>
+          </div>
+          <div>
+            <strong>2. Run analysis on matching artifacts</strong>
+            <p>This skill activates when files or content patterns below are detected during analysis.</p>
+          </div>
+          <div>
+            <strong>3. Verify behavior</strong>
+            <p>Published registry data currently includes <strong>1</strong> deterministic scenario for this skill.</p>
+          </div>
+        </div>
       </section>
       <section class="panel">
         <h2>Metadata</h2>
@@ -45,6 +103,39 @@
         <h2>Triggers</h2>
         <ul><li>.tf</li><li>.tfvars</li><li>.tfvars.json</li><li>terraform-plan.json</li><li>tfplan.json</li></ul>
       </section>
+      <section class="panel">
+        <h2>Content patterns</h2>
+        <ul><li>No content pattern hints declared.</li></ul>
+      </section>
+      <section class="panel guidance">
+        <h2>Guidance excerpt</h2>
+        <h2>Critical risk patterns</h2><h3>Security exposure (CRITICAL)</h3><ul><li>Security group or firewall rule with `0.0.0.0/0` or `::/0` on any port other than 80/443 = CRITICAL — database ports (3306, 5432, 6379, 27017) exposed to the internet are an immediate data breach risk</li><li>IAM policy with `Action: &quot;*&quot;` or `Resource: &quot;*&quot;` = CRITICAL — grants god-mode access; every resource in the account is exposed</li><li>S3 bucket without `block_public_access` enabled = CRITICAL — data exfiltration risk; default should always be block-all</li><li>S3 bucket policy with `Principal: &quot;*&quot;` = CRITICAL — public read/write to the bucket</li><li>KMS key policy with overly broad access grants = HIGH — encryption key compromise affects all encrypted resources</li><li>RDS instance with `publicly_accessible = true` = CRITICAL — database directly reachable from the internet</li><li>EC2 instance or cloud VM in a public subnet without security group restriction = HIGH</li><li>IAM role with `sts:AssumeRole` trust policy allowing external accounts without conditions = CRITICAL — cross-account privilege escalation</li></ul><h3>Data loss risk (CRITICAL)</h3><ul><li>RDS instance without `deletion_protection = true` = CRITICAL — a `terraform destroy` or accidental removal deletes the database permanently</li><li>RDS instance without `final_snapshot_identifier` = HIGH — no backup taken before deletion</li><li>DynamoDB table without `point_in_time_recovery` enabled = HIGH — no recovery from accidental data corruption</li><li>S3 bucket without versioning enabled containing production data = HIGH — no recovery from accidental overwrites or deletes</li><li>EBS volume with `delete_on_termination = true` on production data volumes = HIGH</li><li>ElastiCache cluster without `snapshot_retention_limit &gt; 0` = MEDIUM — no recovery from cache corruption or accidental flush</li></ul><h3>Network risks (HIGH)</h3><ul><li>VPC peering connection or transit gateway route change affecting production subnets = HIGH — can break inter-service communication</li><li>Route table modification removing default routes = CRITICAL — isolates all resources in the subnet</li><li>NAT gateway removal or replacement = HIGH — breaks outbound internet access for private subnets</li><li>Load balancer listener rule changes = MEDIUM — can misroute traffic if ordering is wrong</li><li>DNS record changes (Route53, Cloud DNS) = HIGH — propagation delays mean rollback takes 60-300 seconds depending on TTL</li></ul><h2>State-sensitive operations</h2><h3>Lifecycle rules</h3><ul><li>Resources with `prevent_destroy = true` — flag as CRITICAL if a `destroy` action appears for this resource; Terraform will error but CI pipelines may not surface this clearly</li><li>Resources with `ignore_changes` on security-relevant attributes — warn that drift may exist between actual state and desired state; the ignored attributes could have been manually changed to something dangerous</li><li>Resources with `create_before_destroy = true` — during replacement, both old and new resources exist simultaneously; watch for naming conflicts, IP address changes, and brief service duplication</li><li>Resources with `replace_triggered_by` — replacement cascades to dependent resources; verify the full chain is understood</li></ul><h3>State operations</h3><ul><li>Backend configuration changes (switching from local to S3, changing bucket/key, changing workspace) = CRITICAL — risk of state loss, state corruption, or resources becoming orphaned (exist in cloud but unknown to Terraform)</li><li>`terraform state mv` or `terraform state rm` commands in CI/CD = CRITICAL — manual state manipulation can orphan or duplicate resources</li><li>State lock contention — concurrent `terraform apply` from multiple CI pipelines on the same state file causes lock failures and potential corruption</li><li>Large state files (&gt;10MB) indicate poor module decomposition and increase plan/apply latency</li></ul><h3>Provider version changes</h3><ul><li>Provider major version upgrade (e.g., AWS provider 4.x → 5.x) = HIGH — may change resource behavior, rename attributes, or require state migration</li><li>Provider minor version upgrade = LOW — but check changelog for deprecation warnings</li><li>Terraform core version upgrade = MEDIUM — new versions may change plan behavior, especially around `moved` blocks and refactoring</li></ul><h2>Common failure modes</h2><h3>Plan/apply divergence</h3><ul><li>Data sources that reference frequently changing values (e.g., `aws_ami` with `most_recent = true`) — the AMI ID can change between plan and apply, causing unexpected instance recreation</li><li>Resources depending on external state that changes outside Terraform — plan shows no-op but apply triggers changes</li><li>`timestamp()` or `uuid()` functions in resource attributes — forces replacement on every apply</li></ul><h3>Module pitfalls</h3><ul><li>Module version upgrade that changes resource addresses internally — forces recreation of resources that should be updated in-place (e.g., renaming a resource inside a module from `aws_instance.web` to `aws_instance.app` destroys and recreates the instance)</li><li>`count` vs `for_each` migration — switching from `count` to `for_each` on existing resources forces destruction and recreation of ALL instances because the state key format changes (numeric index vs string key)</li><li>`count` index shift — removing an item from a list used with `count` causes all subsequent resources to shift indices, triggering cascading destroys and recreates (e.g., removing server[1] causes server[2] to become server[1], which Terraform interprets as a replacement)</li></ul><h3>Timing and ordering</h3><ul><li>Resources that require propagation time — IAM policies in AWS take 5-10 seconds to propagate; applying an EC2 instance immediately after an IAM role creation may fail with access denied</li><li>RDS modifications with `apply_immediately = true` — triggers immediate reboot; without it, changes are deferred to the next maintenance window</li><li>Auto Scaling Group changes — `min_size`/`max_size`/`desired_capacity` changes take effect gradually; setting desired to 0 kills all instances immediately</li><li>ECS service deployments — if `deployment_minimum_healthy_percent` is too low, rolling deployments may cause downtime</li></ul><h2>Provider-specific risks</h2><h3>AWS</h3><ul><li>Eventual consistency on IAM — role/policy propagation takes 5-10 seconds across all regions; race conditions are common in rapid provisioning</li><li>RDS Multi-AZ failover during modification — some changes trigger an automatic failover, causing 60-120 seconds of downtime</li><li>Lambda function code changes — zip hash changes trigger a full redeployment; cold start latency spikes during transition</li><li>ECS task definition — new revision creates a new resource, old revision is deregistered; in-flight requests may be dropped if drain timeout is too short</li><li>CloudFront distribution changes take 15-30 minutes to propagate globally</li></ul><h3>GCP</h3><ul><li>Project-level IAM bindings are AUTHORITATIVE — `google_project_iam_binding` removes all other bindings for the specified role; use `google_project_iam_member` for additive bindings</li><li>GKE cluster upgrades are destructive — node pool replacement may drain all pods; surge upgrade settings control blast radius</li><li>Cloud SQL instance name is globally unique and reserved for 7 days after deletion — you cannot recreate with the same name immediately</li></ul><h3>Azure</h3><ul><li>Resource group deletion cascades to ALL contained resources — deleting a resource group is equivalent to deleting every resource inside it</li><li>Azure Policy assignments take 5-15 minutes to evaluate — new resources may temporarily violate policies</li><li>Key Vault soft-delete is enabled by default — deleted vaults retain the name for 90 days, blocking recreation with the same name</li><li>App Service plan tier changes may cause brief downtime during scale operation</li></ul><h2>Risk weight reference</h2><p>| Resource type | Base risk weight | Rationale |</p><p>|---|---|---|</p><p>| Security group / firewall rule | 0.90 | Direct network exposure |</p><p>| IAM policy / role | 0.90 | Access control, blast radius if compromised |</p><p>| RDS / Cloud SQL / database | 0.95 | Data loss, downtime |</p><p>| S3 / GCS / storage bucket | 0.80 | Data exposure, lifecycle |</p><p>| VPC / network | 0.85 | Infrastructure connectivity |</p><p>| EC2 / VM / compute | 0.50 | Replaceable, stateless (usually) |</p><p>| Lambda / Cloud Function | 0.40 | Stateless, fast rollback |</p><p>| Load balancer | 0.70 | Traffic routing, potential downtime |</p><p>| DNS record | 0.75 | Propagation delay makes rollback slow |</p><p>| Tags / labels | 0.05 | Cosmetic, no operational impact |</p><p>| CloudWatch / monitoring | 0.15 | Observability, not runtime |</p><p>| SNS / SQS / messaging | 0.60 | Message loss potential |</p>
+      </section>
     </main>
+    <script>
+      (() => {
+        if (window.location.pathname.endsWith('/index.html')) {
+          const cleanPath = window.location.pathname.replace(/index\.html$/, '');
+          window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
+        const button = document.getElementById('copy-install');
+        const command = document.getElementById('install-command');
+        if (button && command) {
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(command.textContent || '');
+              button.textContent = 'Copied';
+              button.classList.add('copied');
+            } catch (error) {
+              button.textContent = 'Copy failed';
+            }
+            window.setTimeout(() => {
+              button.textContent = 'Copy install command';
+              button.classList.remove('copied');
+            }, 1500);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

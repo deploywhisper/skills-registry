@@ -4,29 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>cloudformation | DeployWhisper Skills Registry</title>
+    <link rel="canonical" href="https://deploywhisper.github.io/skills-registry/skills/cloudformation/" />
     <style>
-      body { margin: 0; background: #f5efe8; color: #1f2530; font-family: ui-sans-serif, system-ui, sans-serif; }
-      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
-      .panel { background: rgba(255,255,255,0.92); border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 22px; padding: 24px; margin-bottom: 18px; }
-      h1 { font-size: 2.8rem; margin: 8px 0 14px; }
-      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
-      p, li { line-height: 1.7; color: #4d596b; }
+      :root {
+        --bg: #f5efe8;
+        --panel: rgba(255,255,255,0.93);
+        --line: rgba(77, 89, 107, 0.12);
+        --text: #1f2530;
+        --muted: #4d596b;
+        --muted-soft: #7a8598;
+        --accent: #d96b3d;
+        --accent-soft: rgba(217,107,61,0.12);
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(217,107,61,0.18), transparent 26%),
+          linear-gradient(180deg, #fbf7f1 0%, var(--bg) 48%, #eee6d9 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      main { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; }
+      .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 44px rgba(28,34,44,0.08); }
+      h1 { font-size: clamp(2.7rem, 6vw, 4rem); margin: 8px 0 14px; letter-spacing: -0.05em; }
+      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      h3 { font-size: 1.1rem; margin-top: 18px; }
+      p, li { line-height: 1.7; color: var(--muted); }
       code { display: inline-flex; padding: 10px 12px; border-radius: 12px; background: #121823; color: #edf0f8; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
+      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
       .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-      .tags span { display: inline-flex; border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: #4d596b; }
-      a { color: #d96b3d; text-decoration: none; font-weight: 700; }
+      .tags span, .badge { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.78); }
+      .badge-official { background: var(--accent-soft); border-color: rgba(217,107,61,0.24); color: var(--accent); font-weight: 700; }
+      a { color: var(--accent); text-decoration: none; font-weight: 700; }
+      .command-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .copy-button {
+        border: 1px solid rgba(217,107,61,0.24);
+        border-radius: 14px;
+        padding: 10px 12px;
+        font: inherit;
+        font-weight: 700;
+        color: var(--accent);
+        background: rgba(255,255,255,0.92);
+        cursor: pointer;
+      }
+      .copy-button.copied { color: #0f7d52; border-color: rgba(15,125,82,0.24); }
+      .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+      .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+      .help-grid ol { margin: 0; padding-left: 18px; }
+      .guidance h2 { margin-top: 24px; }
+      .guidance ul { padding-left: 20px; }
     </style>
   </head>
   <body>
     <main>
       <section class="panel">
         <div class="meta">cloudformation</div>
+        <div class="hero-badges"><span class='badge badge-official'>Official</span><span class="badge">v1.0.0</span><span class="badge">1 scenarios</span></div>
         <h1>Cloudformation</h1>
         <p>Deep CloudFormation risk intelligence covering resource replacement detection, deletion policies, drift patterns, stack dependencies, IAM resource risks, and service quota awareness.</p>
-        <p><code>deploywhisper skill install cloudformation</code></p>
+        <div class="command-row">
+          <code id="install-command">deploywhisper skill install cloudformation</code>
+          <button class="copy-button" id="copy-install">Copy install command</button>
+        </div>
         <p><a href="../../index.html">Back to catalog</a></p>
+      </section>
+      <section class="panel">
+        <h2>How to use this skill</h2>
+        <div class="help-grid">
+          <div>
+            <strong>1. Install it locally</strong>
+            <p>Use the install command above from any DeployWhisper app checkout that has the installer enabled.</p>
+          </div>
+          <div>
+            <strong>2. Run analysis on matching artifacts</strong>
+            <p>This skill activates when files or content patterns below are detected during analysis.</p>
+          </div>
+          <div>
+            <strong>3. Verify behavior</strong>
+            <p>Published registry data currently includes <strong>1</strong> deterministic scenario for this skill.</p>
+          </div>
+        </div>
       </section>
       <section class="panel">
         <h2>Metadata</h2>
@@ -45,6 +103,39 @@
         <h2>Triggers</h2>
         <ul><li>.yaml</li><li>.yml</li><li>.json</li><li>.template</li></ul>
       </section>
+      <section class="panel">
+        <h2>Content patterns</h2>
+        <ul><li>AWSTemplateFormatVersion</li><li>Resources</li><li>AWS::</li><li>CloudFormation</li></ul>
+      </section>
+      <section class="panel guidance">
+        <h2>Guidance excerpt</h2>
+        <h2>Resource update behavior</h2><h3>Replacement-required updates (CRITICAL)</h3><ul><li>Any resource change that triggers `Replacement` instead of `Update` = CRITICAL — CloudFormation destroys the old resource and creates a new one; for stateful resources (RDS, DynamoDB, ElastiCache) this means DATA LOSS unless DeletionPolicy is Retain or Snapshot</li><li>Common replacement triggers:</li><li>RDS: `Engine`, `DBInstanceIdentifier`, `MasterUsername`, `AvailabilityZone`, `StorageEncrypted` changes all force replacement</li><li>DynamoDB: `TableName`, `KeySchema` (partition/sort key), `BillingMode` change from PAY_PER_REQUEST to PROVISIONED (on some versions)</li><li>EC2: `InstanceType` change on instances without stop/start support, `ImageId` change, `AvailabilityZone` change</li><li>ElastiCache: `Engine`, `CacheNodeType` on some cluster modes, `NumCacheClusters` reduction</li><li>Lambda: `FunctionName` change forces replacement; `Runtime`, `Handler`, `Code` are in-place updates</li><li>S3: `BucketName` change = REPLACEMENT — and S3 bucket names are globally unique; the old name may not be reclaimable</li></ul><h3>In-place update risks (HIGH)</h3><ul><li>RDS `MultiAZ` change = triggers brief failover (60-120 seconds downtime)</li><li>RDS `AllocatedStorage` increase = online for most engines; DECREASE is not supported and fails</li><li>EC2 `InstanceType` change = requires stop/start; brief downtime during transition</li><li>Auto Scaling Group `LaunchTemplate` version change = triggers rolling replacement of instances based on update policy</li><li>ECS `TaskDefinition` revision change = triggers new deployment; old tasks drain based on `DeregistrationDelay`</li></ul><h3>No-interruption updates (LOW)</h3><ul><li>Tag changes on most resources = no interruption, no replacement</li><li>CloudWatch alarm threshold changes = immediate effect</li><li>Lambda environment variable changes = next invocation uses new values</li><li>SNS topic `DisplayName` change = no operational impact</li></ul><h2>Deletion policy analysis</h2><h3>Missing DeletionPolicy (CRITICAL)</h3><ul><li>RDS instance without `DeletionPolicy: Snapshot` or `DeletionPolicy: Retain` = CRITICAL — stack deletion or resource removal destroys the database with no backup; DEFAULT behavior is Delete</li><li>DynamoDB table without `DeletionPolicy: Retain` = CRITICAL — table and all data destroyed on removal</li><li>S3 bucket without `DeletionPolicy: Retain` = HIGH — bucket must be empty before CloudFormation can delete it; if not empty, stack deletion fails and leaves the stack in DELETE_FAILED state</li><li>EBS volumes without `DeletionPolicy: Snapshot` = HIGH — data volumes destroyed without backup</li><li>ElastiCache without `DeletionPolicy: Snapshot` = MEDIUM — cache data lost; acceptable if cache is rebuilt from persistent data source</li><li>Elasticsearch/OpenSearch domain without snapshot = HIGH — index data lost</li></ul><h3>DeletionPolicy changes (HIGH)</h3><ul><li>`DeletionPolicy` changed from `Retain` to `Delete` = CRITICAL — previously protected resource is now vulnerable to stack deletion</li><li>`DeletionPolicy` removed entirely = CRITICAL — reverts to default behavior which is Delete for most resources</li><li>`UpdateReplacePolicy` missing when DeletionPolicy is set = MEDIUM — DeletionPolicy protects against stack deletion, but UpdateReplacePolicy protects against in-stack replacement; they serve different purposes and both should be set on stateful resources</li></ul><h2>Drift-prone patterns</h2><h3>Console-modified resources (HIGH)</h3><ul><li>Resources frequently modified via AWS Console (security groups, IAM policies, S3 bucket policies) — console changes create drift between actual state and template state; next stack update may REVERT console changes silently</li><li>Resources with `Metadata` section that doesn&#x27;t match actual metadata = drift indicator</li><li>Auto Scaling Group with manually adjusted `DesiredCapacity` — stack update resets to template value</li><li>RDS instance with manually applied parameter group changes — stack update may revert to template-defined parameter group</li></ul><h3>Parameter default masking (MEDIUM)</h3><ul><li>Parameters with `Default` values that operators override via console — the override is not captured in the template; stack recreation uses the default, not the overridden value</li><li>`Conditions` that reference parameters — changing a parameter default can flip conditions, enabling or disabling entire resource branches</li><li>`Mappings` used with `AWS::Region` — ensure all required regions have entries; deploying to a new region with a missing mapping entry causes creation failure</li></ul><h2>Stack dependency risks</h2><h3>Cross-stack references (HIGH)</h3><ul><li>`Fn::ImportValue` referencing another stack&#x27;s `Export` = HIGH — creates an implicit dependency; the exporting stack cannot be updated to change or remove the export while any stack imports it; this creates stack lock-in</li><li>`Export` name change = CRITICAL — all importing stacks immediately break; CloudFormation prevents this but nested reference chains can be complex</li><li>Stack output used as parameter in another stack (manual wiring) = MEDIUM — less tightly coupled but requires deployment ordering discipline</li></ul><h3>Nested stack risks (HIGH)</h3><ul><li>Nested stack template URL change = HIGH — triggers nested stack update; ALL resources in the nested stack are re-evaluated</li><li>Nested stack parameter change = propagates through the nested stack; side effects depend on which resources consume the parameter</li><li>Parent stack rollback with nested stacks = complex — nested stack may succeed while parent fails; leaves inconsistent state</li><li>Nested stack with `DeletionPolicy: Retain` on resources inside = the nested stack itself may be deleted but retained resources persist as orphans outside CloudFormation management</li></ul><h2>IAM resource risks</h2><h3>Overly broad policies (CRITICAL)</h3><ul><li>`AWS::IAM::Policy` with `Action: &quot;*&quot;` = CRITICAL — administrative access to every AWS service</li><li>`AWS::IAM::Policy` with `Resource: &quot;*&quot;` on sensitive actions = CRITICAL — action applies to every resource in the account</li><li>`AWS::IAM::Role` with trust policy allowing `Principal: &quot;*&quot;` = CRITICAL — any AWS account can assume the role</li><li>`AWS::IAM::Role` trust policy without `Condition` restricting `sts:ExternalId` for cross-account roles = HIGH — susceptible to confused deputy attack</li><li>`AWS::IAM::ManagedPolicy` with `Path: &quot;/&quot;` attached to multiple roles = MEDIUM — broad attachment scope; change affects all attached roles</li></ul><h3>IAM boundary and constraints</h3><ul><li>Missing `PermissionsBoundary` on IAM roles created by the stack = MEDIUM — roles have no upper bound on permissions; a policy change can escalate beyond intended scope</li><li>`AWS::IAM::InstanceProfile` change = HIGH — requires instance stop/start or replacement to take effect</li><li>Service-linked role manipulation = HIGH — these are managed by AWS services; manual modification can break service functionality</li></ul><h2>Service quota risks</h2><h3>Capacity limits (MEDIUM)</h3><ul><li>Creating multiple resources of the same type — check against account-level service quotas:</li><li>VPCs per region: default 5</li><li>Elastic IPs per region: default 5</li><li>RDS instances per region: default 40</li><li>Lambda concurrent executions: default 1000</li><li>S3 buckets per account: default 100</li><li>CloudFormation stacks per region: default 200</li><li>Resources approaching quota limits may succeed in development (fewer resources) but fail in production (more resources)</li><li>Quota increases require AWS support requests and take 1-5 business days</li></ul><h3>Template limits</h3><ul><li>Template body size limit: 51,200 bytes (direct upload) or 460,800 bytes (S3 URL)</li><li>Resource limit per template: 500 resources — approaching this limit indicates the stack should be decomposed</li><li>Output limit: 200 outputs per stack</li><li>Parameter limit: 200 parameters per stack</li><li>Mapping limit: 200 mappings with 200 key-value pairs each</li></ul><h2>CloudFormation-specific failure modes</h2><h3>Stack update failures</h3><ul><li>Stack in `UPDATE_ROLLBACK_FAILED` state = CRITICAL — stack is stuck; requires manual intervention via `ContinueUpdateRollback` with resources to skip, or potentially stack recreation</li><li>Circular dependency between resources = creation failure — `DependsOn` chains that form a cycle prevent stack creation; CloudFormation detects this at validation time</li><li>Insufficient IAM permissions for CloudFormation execution role = creation/update failure — CloudFormation needs permission to create EVERY resource type in the template</li><li>Resource creation order dependency not expressed in template — CloudFormation creates resources in parallel unless `DependsOn` specifies ordering; missing DependsOn on dependent resources causes race conditions</li></ul><h3>Rollback risks</h3><ul><li>Stack update with `--no-rollback` flag = CRITICAL — if update fails, stack remains in `UPDATE_FAILED` state with partial changes applied; no automatic recovery</li><li>Stack creation with `--on-failure DO_NOTHING` = HIGH — failed stack persists with partial resources; useful for debugging but dangerous in automation</li><li>Rollback of a stack that created resources with external dependencies (data was written to the new database, DNS was pointed to new load balancer) = the rollback destroys the new resources but the external dependencies are not rolled back</li><li>Change set with `Replacement: True` on multiple resources = HIGH — if any replacement fails mid-update, rollback must recreate the ORIGINAL resources which may fail (name conflicts, quota limits)</li></ul>
+      </section>
     </main>
+    <script>
+      (() => {
+        if (window.location.pathname.endsWith('/index.html')) {
+          const cleanPath = window.location.pathname.replace(/index\.html$/, '');
+          window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
+        const button = document.getElementById('copy-install');
+        const command = document.getElementById('install-command');
+        if (button && command) {
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(command.textContent || '');
+              button.textContent = 'Copied';
+              button.classList.add('copied');
+            } catch (error) {
+              button.textContent = 'Copy failed';
+            }
+            window.setTimeout(() => {
+              button.textContent = 'Copy install command';
+              button.classList.remove('copied');
+            }, 1500);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

@@ -4,29 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>kubernetes | DeployWhisper Skills Registry</title>
+    <link rel="canonical" href="https://deploywhisper.github.io/skills-registry/skills/kubernetes/" />
     <style>
-      body { margin: 0; background: #f5efe8; color: #1f2530; font-family: ui-sans-serif, system-ui, sans-serif; }
-      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
-      .panel { background: rgba(255,255,255,0.92); border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 22px; padding: 24px; margin-bottom: 18px; }
-      h1 { font-size: 2.8rem; margin: 8px 0 14px; }
-      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
-      p, li { line-height: 1.7; color: #4d596b; }
+      :root {
+        --bg: #f5efe8;
+        --panel: rgba(255,255,255,0.93);
+        --line: rgba(77, 89, 107, 0.12);
+        --text: #1f2530;
+        --muted: #4d596b;
+        --muted-soft: #7a8598;
+        --accent: #d96b3d;
+        --accent-soft: rgba(217,107,61,0.12);
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(217,107,61,0.18), transparent 26%),
+          linear-gradient(180deg, #fbf7f1 0%, var(--bg) 48%, #eee6d9 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      main { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; }
+      .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 44px rgba(28,34,44,0.08); }
+      h1 { font-size: clamp(2.7rem, 6vw, 4rem); margin: 8px 0 14px; letter-spacing: -0.05em; }
+      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      h3 { font-size: 1.1rem; margin-top: 18px; }
+      p, li { line-height: 1.7; color: var(--muted); }
       code { display: inline-flex; padding: 10px 12px; border-radius: 12px; background: #121823; color: #edf0f8; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
+      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
       .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-      .tags span { display: inline-flex; border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: #4d596b; }
-      a { color: #d96b3d; text-decoration: none; font-weight: 700; }
+      .tags span, .badge { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.78); }
+      .badge-official { background: var(--accent-soft); border-color: rgba(217,107,61,0.24); color: var(--accent); font-weight: 700; }
+      a { color: var(--accent); text-decoration: none; font-weight: 700; }
+      .command-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .copy-button {
+        border: 1px solid rgba(217,107,61,0.24);
+        border-radius: 14px;
+        padding: 10px 12px;
+        font: inherit;
+        font-weight: 700;
+        color: var(--accent);
+        background: rgba(255,255,255,0.92);
+        cursor: pointer;
+      }
+      .copy-button.copied { color: #0f7d52; border-color: rgba(15,125,82,0.24); }
+      .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+      .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+      .help-grid ol { margin: 0; padding-left: 18px; }
+      .guidance h2 { margin-top: 24px; }
+      .guidance ul { padding-left: 20px; }
     </style>
   </head>
   <body>
     <main>
       <section class="panel">
         <div class="meta">kubernetes</div>
+        <div class="hero-badges"><span class='badge badge-official'>Official</span><span class="badge">v1.0.0</span><span class="badge">1 scenarios</span></div>
         <h1>Kubernetes</h1>
         <p>Deep Kubernetes operational knowledge covering workload safety, rolling update risks, RBAC escalation, network policy gaps, and resource management pitfalls.</p>
-        <p><code>deploywhisper skill install kubernetes</code></p>
+        <div class="command-row">
+          <code id="install-command">deploywhisper skill install kubernetes</code>
+          <button class="copy-button" id="copy-install">Copy install command</button>
+        </div>
         <p><a href="../../index.html">Back to catalog</a></p>
+      </section>
+      <section class="panel">
+        <h2>How to use this skill</h2>
+        <div class="help-grid">
+          <div>
+            <strong>1. Install it locally</strong>
+            <p>Use the install command above from any DeployWhisper app checkout that has the installer enabled.</p>
+          </div>
+          <div>
+            <strong>2. Run analysis on matching artifacts</strong>
+            <p>This skill activates when files or content patterns below are detected during analysis.</p>
+          </div>
+          <div>
+            <strong>3. Verify behavior</strong>
+            <p>Published registry data currently includes <strong>1</strong> deterministic scenario for this skill.</p>
+          </div>
+        </div>
       </section>
       <section class="panel">
         <h2>Metadata</h2>
@@ -45,6 +103,39 @@
         <h2>Triggers</h2>
         <ul><li>.yaml</li><li>.yml</li></ul>
       </section>
+      <section class="panel">
+        <h2>Content patterns</h2>
+        <ul><li>apiVersion</li><li>kind</li><li>metadata</li><li>spec.containers</li><li>spec.replicas</li></ul>
+      </section>
+      <section class="panel guidance">
+        <h2>Guidance excerpt</h2>
+        <h2>Critical risk patterns</h2><h3>Workload security (CRITICAL)</h3><ul><li>Container running as root (`securityContext.runAsUser: 0` or missing `runAsNonRoot: true`) = CRITICAL — container escape vulnerabilities grant host-level access</li><li>Privileged container (`securityContext.privileged: true`) = CRITICAL — full access to host kernel, devices, and network stack; equivalent to root on the node</li><li>`hostNetwork: true` = CRITICAL — container shares the node&#x27;s network namespace; can intercept traffic from other pods on the same node</li><li>`hostPID: true` or `hostIPC: true` = HIGH — container can see and signal all processes on the host node</li><li>Missing `securityContext.readOnlyRootFilesystem: true` = MEDIUM — writable filesystem increases attack surface for malware persistence</li><li>Container image with `latest` tag = HIGH — non-deterministic deployments; the same manifest can produce different containers on different nodes</li><li>Container image from untrusted registry (not your private ECR/GCR/ACR) = HIGH — supply chain attack vector</li><li>Image without digest pinning (using tag instead of `image@sha256:...`) = MEDIUM — tag can be overwritten in the registry</li></ul><h3>Missing resource controls (HIGH)</h3><ul><li>No `resources.limits.memory` set = HIGH — a single pod can consume all node memory and trigger OOM kills on other pods via the kernel OOM killer</li><li>No `resources.limits.cpu` set = MEDIUM — pod can starve other workloads of CPU; less severe than memory because CPU is compressible</li><li>No `resources.requests` set = HIGH — scheduler cannot make informed placement decisions; pods may land on overcommitted nodes</li><li>`resources.requests` much lower than `resources.limits` (&gt;4x ratio) = MEDIUM — indicates over-commitment; the pod claims little but uses a lot, causing node pressure</li><li>`resources.limits.memory` lower than application baseline = HIGH — pod will be OOM-killed repeatedly, causing CrashLoopBackOff</li></ul><h3>Replica and availability risks (HIGH)</h3><ul><li>`spec.replicas: 1` in production = HIGH — single point of failure; any pod disruption causes full outage</li><li>`spec.replicas` reduced from current value = MEDIUM — capacity reduction during a change is risky; validate that remaining capacity handles peak load</li><li>No `PodDisruptionBudget` for production workloads = HIGH — voluntary disruptions (node drains, cluster upgrades) can evict all pods simultaneously</li><li>PDB with `maxUnavailable: 100%` or `minAvailable: 0` = CRITICAL — defeats the purpose of the PDB; all pods can be evicted at once</li></ul><h2>Rolling update risks</h2><h3>Deployment strategy</h3><ul><li>`strategy.rollingUpdate.maxUnavailable` set too high (&gt;25%) = HIGH — too many pods terminate before replacements are ready; causes capacity dip during rollout</li><li>`strategy.rollingUpdate.maxSurge: 0` with `maxUnavailable: 0` = CRITICAL — deadlock; Kubernetes cannot create new pods or remove old ones</li><li>`strategy.type: Recreate` in production = CRITICAL — all old pods are killed before new pods start; guarantees downtime during deployment</li><li>Missing `minReadySeconds` = MEDIUM — new pods are considered ready immediately; a pod that passes readiness probe once but fails under load will still receive traffic</li></ul><h3>Probe configuration</h3><ul><li>No `readinessProbe` defined = CRITICAL — Kubernetes sends traffic to pods that may not be ready to serve; causes errors during rollout and after restarts</li><li>No `livenessProbe` defined = MEDIUM — stuck/deadlocked pods are never restarted; process is running but not functional</li><li>`livenessProbe` with aggressive timing (`periodSeconds &lt; 5`, `failureThreshold &lt; 3`) = HIGH — healthy but briefly slow pods get killed unnecessarily, causing restart loops</li><li>`livenessProbe` and `readinessProbe` pointing to the same endpoint with same thresholds = MEDIUM — when the service is degraded, you want it removed from load balancer (readiness) but not killed (liveness); same config means degraded = killed</li><li>`startupProbe` missing on slow-starting applications = HIGH — liveness probe kills the pod before the application finishes initialization</li><li>`initialDelaySeconds` too short for applications with long startup (JVM, .NET, ML model loading) = HIGH — pod killed during warmup</li></ul><h3>Image and container changes</h3><ul><li>Image tag change (e.g., `v2.14.1` → `v2.15.0`) = MEDIUM-HIGH — new code rolling into production; risk scales with change magnitude</li><li>Base image change (e.g., `node:18-alpine` → `node:20-alpine`) = HIGH — runtime version change can introduce subtle behavior differences</li><li>`imagePullPolicy: Never` with a tag (not digest) = HIGH — uses whatever image is cached on the node; different nodes may run different versions</li><li>`imagePullPolicy: Always` with `latest` tag = CRITICAL — every pod restart pulls whatever is currently tagged latest; non-deterministic</li></ul><h2>RBAC and access control</h2><h3>Role escalation risks</h3><ul><li>`ClusterRole` with `verbs: [&quot;*&quot;]` on any resource = CRITICAL — wildcard permissions grant full control</li><li>`ClusterRole` with `resources: [&quot;*&quot;]` = CRITICAL — applies to every resource type in the cluster</li><li>`ClusterRoleBinding` granting cluster-admin to a ServiceAccount used by a workload = CRITICAL — compromised pod gets full cluster access</li><li>New `RoleBinding` or `ClusterRoleBinding` creation = HIGH — always review who/what is getting access and to what resources</li><li>ServiceAccount with `automountServiceAccountToken: true` (default) in pods that don&#x27;t need API access = MEDIUM — unnecessary credential exposure</li></ul><h3>Secret management</h3><ul><li>`Secret` data changed = HIGH — verify the secret content is correct; wrong database password or API key causes runtime failures across all pods mounting the secret</li><li>`Secret` referenced in environment variables instead of volume mounts = MEDIUM — environment variables appear in process listings, crash dumps, and log output</li><li>`ConfigMap` change that is mounted as a volume = MEDIUM — existing pods see the change after kubelet sync delay (60-90 seconds by default); no restart needed but timing is unpredictable</li><li>`ConfigMap` change referenced via `envFrom` = HIGH — requires pod restart to pick up changes; running pods continue with old values until restarted</li></ul><h2>Network policy risks</h2><ul><li>Production namespace without any `NetworkPolicy` = HIGH — all pods can communicate with all other pods in the cluster; no microsegmentation</li><li>`NetworkPolicy` with empty `ingress` or `egress` rules = MEDIUM — blocks all traffic in that direction; can isolate pods unintentionally</li><li>`NetworkPolicy` with `podSelector: {}` (empty selector) = note — selects ALL pods in the namespace; verify this is intentional</li><li>Removing a `NetworkPolicy` = HIGH — instantly opens traffic that was previously restricted</li><li>`NetworkPolicy` referencing a label that no pod currently has = MEDIUM — policy exists but has no effect; may indicate a misconfiguration</li></ul><h2>Resource management pitfalls</h2><h3>HPA and scaling</h3><ul><li>`HorizontalPodAutoscaler` targeting the same deployment as a manual `replicas` field = CRITICAL — HPA and manual replica count fight each other; HPA overwrites manual changes</li><li>HPA `minReplicas: 1` in production = HIGH — autoscaler can scale down to single instance, creating a SPOF</li><li>HPA `maxReplicas` too high without corresponding node capacity = MEDIUM — pods will be stuck in Pending if cluster autoscaler can&#x27;t provision nodes fast enough</li><li>HPA `targetCPUUtilizationPercentage` too low (&lt;30%) = MEDIUM — wasteful over-provisioning; too high (&gt;80%) = HIGH — insufficient headroom for traffic spikes, pods may become unresponsive before new ones are ready</li><li>VPA and HPA targeting the same resource on CPU = CRITICAL — conflicting recommendations cause flapping</li></ul><h3>Storage</h3><ul><li>`PersistentVolumeClaim` access mode change = HIGH — may require PV recreation, causing data access interruption</li><li>`PersistentVolume` reclaim policy `Delete` on production data = CRITICAL — volume and data destroyed when PVC is deleted</li><li>`StorageClass` change on existing PVC = not supported — requires PVC recreation and data migration</li><li>`emptyDir` used for data that must survive pod restarts = HIGH — data is lost when pod is evicted, rescheduled, or OOM-killed</li></ul><h2>Namespace and context</h2><ul><li>Changes targeting `kube-system` namespace = CRITICAL — core cluster components; mistakes here affect the entire cluster</li><li>Changes targeting `default` namespace in production = MEDIUM — indicates poor namespace hygiene; production workloads should have dedicated namespaces</li><li>Resource quotas or limit ranges being reduced = HIGH — may cause existing pods to exceed new limits; new pods may fail to schedule</li><li>Namespace deletion = CRITICAL — destroys all resources in the namespace including persistent volume claims (data loss)</li></ul>
+      </section>
     </main>
+    <script>
+      (() => {
+        if (window.location.pathname.endsWith('/index.html')) {
+          const cleanPath = window.location.pathname.replace(/index\.html$/, '');
+          window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
+        const button = document.getElementById('copy-install');
+        const command = document.getElementById('install-command');
+        if (button && command) {
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(command.textContent || '');
+              button.textContent = 'Copied';
+              button.classList.add('copied');
+            } catch (error) {
+              button.textContent = 'Copy failed';
+            }
+            window.setTimeout(() => {
+              button.textContent = 'Copy install command';
+              button.classList.remove('copied');
+            }, 1500);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

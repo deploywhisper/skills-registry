@@ -4,29 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>jenkins | DeployWhisper Skills Registry</title>
+    <link rel="canonical" href="https://deploywhisper.github.io/skills-registry/skills/jenkins/" />
     <style>
-      body { margin: 0; background: #f5efe8; color: #1f2530; font-family: ui-sans-serif, system-ui, sans-serif; }
-      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
-      .panel { background: rgba(255,255,255,0.92); border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 22px; padding: 24px; margin-bottom: 18px; }
-      h1 { font-size: 2.8rem; margin: 8px 0 14px; }
-      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
-      p, li { line-height: 1.7; color: #4d596b; }
+      :root {
+        --bg: #f5efe8;
+        --panel: rgba(255,255,255,0.93);
+        --line: rgba(77, 89, 107, 0.12);
+        --text: #1f2530;
+        --muted: #4d596b;
+        --muted-soft: #7a8598;
+        --accent: #d96b3d;
+        --accent-soft: rgba(217,107,61,0.12);
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(217,107,61,0.18), transparent 26%),
+          linear-gradient(180deg, #fbf7f1 0%, var(--bg) 48%, #eee6d9 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      main { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; }
+      .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 44px rgba(28,34,44,0.08); }
+      h1 { font-size: clamp(2.7rem, 6vw, 4rem); margin: 8px 0 14px; letter-spacing: -0.05em; }
+      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      h3 { font-size: 1.1rem; margin-top: 18px; }
+      p, li { line-height: 1.7; color: var(--muted); }
       code { display: inline-flex; padding: 10px 12px; border-radius: 12px; background: #121823; color: #edf0f8; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #7a8598; }
+      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
       .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-      .tags span { display: inline-flex; border: 1px solid rgba(77, 89, 107, 0.12); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: #4d596b; }
-      a { color: #d96b3d; text-decoration: none; font-weight: 700; }
+      .tags span, .badge { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.78); }
+      .badge-official { background: var(--accent-soft); border-color: rgba(217,107,61,0.24); color: var(--accent); font-weight: 700; }
+      a { color: var(--accent); text-decoration: none; font-weight: 700; }
+      .command-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .copy-button {
+        border: 1px solid rgba(217,107,61,0.24);
+        border-radius: 14px;
+        padding: 10px 12px;
+        font: inherit;
+        font-weight: 700;
+        color: var(--accent);
+        background: rgba(255,255,255,0.92);
+        cursor: pointer;
+      }
+      .copy-button.copied { color: #0f7d52; border-color: rgba(15,125,82,0.24); }
+      .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+      .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+      .help-grid ol { margin: 0; padding-left: 18px; }
+      .guidance h2 { margin-top: 24px; }
+      .guidance ul { padding-left: 20px; }
     </style>
   </head>
   <body>
     <main>
       <section class="panel">
         <div class="meta">jenkins</div>
+        <div class="hero-badges"><span class='badge badge-official'>Official</span><span class="badge">v1.0.0</span><span class="badge">1 scenarios</span></div>
         <h1>Jenkins</h1>
         <p>Deep Jenkins pipeline safety knowledge covering approval gate analysis, credential exposure patterns, agent security, deployment stage risks, and shared library vulnerabilities.</p>
-        <p><code>deploywhisper skill install jenkins</code></p>
+        <div class="command-row">
+          <code id="install-command">deploywhisper skill install jenkins</code>
+          <button class="copy-button" id="copy-install">Copy install command</button>
+        </div>
         <p><a href="../../index.html">Back to catalog</a></p>
+      </section>
+      <section class="panel">
+        <h2>How to use this skill</h2>
+        <div class="help-grid">
+          <div>
+            <strong>1. Install it locally</strong>
+            <p>Use the install command above from any DeployWhisper app checkout that has the installer enabled.</p>
+          </div>
+          <div>
+            <strong>2. Run analysis on matching artifacts</strong>
+            <p>This skill activates when files or content patterns below are detected during analysis.</p>
+          </div>
+          <div>
+            <strong>3. Verify behavior</strong>
+            <p>Published registry data currently includes <strong>1</strong> deterministic scenario for this skill.</p>
+          </div>
+        </div>
       </section>
       <section class="panel">
         <h2>Metadata</h2>
@@ -45,6 +103,39 @@
         <h2>Triggers</h2>
         <ul><li>Jenkinsfile</li><li>.jenkinsfile</li><li>jenkins.groovy</li></ul>
       </section>
+      <section class="panel">
+        <h2>Content patterns</h2>
+        <ul><li>pipeline</li><li>stage</li><li>agent</li><li>steps</li><li>post</li><li>input</li><li>parallel</li></ul>
+      </section>
+      <section class="panel guidance">
+        <h2>Guidance excerpt</h2>
+        <h2>Approval gate analysis</h2><h3>Removed gates (CRITICAL)</h3><ul><li>`input` step removed from before a production deploy stage = CRITICAL — human approval was required and is now bypassed; deployments go straight to production without review</li><li>`input` step with `submitter` parameter removed or changed = HIGH — changes who can approve; removing submitter means ANYONE can approve</li><li>`timeout` removed from `input` step = MEDIUM — without timeout, a stale approval request blocks the pipeline forever; with timeout, auto-rejection prevents zombie pipelines</li><li>`input` step moved from before deploy to after deploy = CRITICAL — approval happens after the change is already in production; defeats the purpose entirely</li></ul><h3>Weakened gates (HIGH)</h3><ul><li>`input` step moved inside a `parallel` block = HIGH — approval may be requested simultaneously for multiple environments; operator can accidentally approve prod thinking they&#x27;re approving staging</li><li>`input` message changed to be less specific = MEDIUM — vague approval messages (&quot;Continue?&quot;) don&#x27;t communicate what&#x27;s being approved; should specify environment, version, and change summary</li><li>`when` condition on deploy stage changed from `branch &#x27;main&#x27;` to `branch &#x27;*&#x27;` = HIGH — production deploy now triggers from any branch, including feature branches and PRs</li><li>`when` condition removed entirely from deploy stage = CRITICAL — deploy stage runs unconditionally on every pipeline execution</li></ul><h2>Credential exposure patterns</h2><h3>Direct exposure (CRITICAL)</h3><ul><li>Environment variable set to credential value without `credentials()` helper — `env.DB_PASSWORD = &#x27;actual-password&#x27;` exposes the password in pipeline logs, Blue Ocean UI, and build artifacts</li><li>`echo` or `println` of a variable that contains credentials = CRITICAL — Jenkins masks known credential IDs but not arbitrary variables containing secrets</li><li>`sh` step with credentials interpolated in the command string — `sh &quot;curl -u ${USER}:${PASSWORD} https://api...&quot;` exposes credentials in the shell process listing and Jenkins build log</li><li>`writeFile` with credential content without subsequent `archiveArtifacts` exclusion = HIGH — credential file may end up in build artifacts</li></ul><h3>Proper credential patterns</h3><ul><li>`credentials(&#x27;credential-id&#x27;)` binding in `environment` block — Jenkins auto-masks the value in logs</li><li>`withCredentials([...])` block wrapping only the steps that need access — limits exposure scope</li><li>`sshagent([&#x27;ssh-key-id&#x27;])` for SSH operations — key is loaded into agent memory, not written to disk</li><li>`secretText` / `usernamePassword` / `certificate` credential types — each has specific binding syntax</li></ul><h3>CI/CD secret leaks (HIGH)</h3><ul><li>`Jenkinsfile` committed to repo with hardcoded secrets = CRITICAL — secrets are in version control history permanently; even after removal, they exist in git history</li><li>`parameters` block with `defaultValue` containing secrets = HIGH — default values are visible in the Jenkins UI and API</li><li>`stash`/`unstash` of files containing secrets between stages = MEDIUM — stashed files are stored on the Jenkins controller; accessible to other builds if not cleaned up</li><li>`archiveArtifacts` including `.env` files, config files with secrets, or credential files = CRITICAL — artifacts are downloadable by anyone with build access</li></ul><h2>Agent security</h2><h3>Execution environment risks (HIGH)</h3><ul><li>`agent any` in production pipeline = HIGH — pipeline runs on ANY available agent, including untrusted or shared agents; production pipelines should target specific labeled agents</li><li>`agent { label &#x27;master&#x27; }` or `agent { label &#x27;built-in&#x27; }` = CRITICAL — running on the Jenkins controller exposes the entire Jenkins configuration, credential store, and all job definitions</li><li>`agent { docker { image &#x27;untrusted:latest&#x27; } }` = HIGH — running build in an untrusted container image; supply chain attack vector</li><li>`agent` changed from specific label to `any` = HIGH — regression in agent targeting; production builds may run on development agents</li></ul><h3>Sandbox restrictions</h3><ul><li>`@NonCPS` annotation on methods = HIGH — bypasses the Groovy sandbox; can execute arbitrary code on the Jenkins controller</li><li>`@Grab` annotation importing external dependencies = CRITICAL — downloads and executes arbitrary code from Maven Central at runtime</li><li>Script approval requests in the Jenkins admin console = MEDIUM — indicates the pipeline is using APIs not in the sandbox whitelist; review what API access is being requested</li><li>`load` step loading external Groovy scripts = HIGH — loaded scripts bypass the Jenkinsfile sandbox unless also sandboxed</li></ul><h2>Deployment stage risks</h2><h3>Deployment patterns (HIGH)</h3><ul><li>Deploy stage without preceding test stage = HIGH — deploying untested code; the pipeline structure should enforce test → build → deploy ordering</li><li>Deploy stage in `parallel` block with test stage = HIGH — deploy runs simultaneously with tests, not after them; deploy may complete before tests fail</li><li>Deploy stage without `post { failure { ... } }` rollback block = HIGH — if deployment fails mid-way, there&#x27;s no automated recovery</li><li>Deploy stage using `sh &#x27;kubectl apply&#x27;` without `--dry-run` validation step first = MEDIUM — applying directly without pre-validation; add a dry-run stage before the actual apply</li></ul><h3>Rollback and recovery</h3><ul><li>Missing `post { failure { } }` block = MEDIUM — no automated action on pipeline failure; at minimum should notify a Slack channel or PagerDuty</li><li>Missing `post { always { } }` cleanup block = MEDIUM — temporary files, Docker containers, and test artifacts are not cleaned up; causes disk space issues over time</li><li>`post { unstable { } }` not defined = LOW — unstable builds (test failures that don&#x27;t fail the pipeline) may need different handling than full failures</li><li>Retry block with `retry(count)` &gt; 3 = MEDIUM — excessive retries can mask transient errors and delay failure notification; 3 retries is usually sufficient</li></ul><h3>Canary and progressive deployment</h3><ul><li>Deploy stage going from canary/blue-green to direct deployment = CRITICAL — regression in deployment safety; removes the ability to test with a subset of traffic before full rollout</li><li>`sleep` step used for manual canary validation = MEDIUM — fragile; pipeline blocks for a fixed duration regardless of whether canary is healthy; use a health check loop instead</li><li>Weight-based traffic shifting without health check gate between increments = HIGH — traffic shifts to new version even if it&#x27;s unhealthy</li></ul><h2>Shared library risks</h2><h3>Library version changes (HIGH)</h3><ul><li>`@Library(&#x27;my-shared-lib@main&#x27;)` — always uses latest main branch; library change affects ALL pipelines using it simultaneously; a bug in the library breaks every pipeline at once</li><li>Library version changed from pinned tag to branch reference = HIGH — moves from deterministic to non-deterministic behavior</li><li>Library version changed from one tag to another = MEDIUM — review the library changelog for breaking changes</li><li>New `@Library` import added = MEDIUM — introduces dependency on external code; verify the library source is trusted</li><li>Library function signature changed — downstream pipelines using old signature will fail; library authors should maintain backward compatibility</li></ul><h3>Library security</h3><ul><li>Shared library with `@Grab` dependencies = CRITICAL — external dependency resolution at runtime; can be hijacked via dependency confusion</li><li>Shared library accessing `Jenkins.instance` = CRITICAL — has full access to the Jenkins controller, all credentials, all job configurations</li><li>Shared library modifying global state = HIGH — `env` modifications in a library function affect all subsequent stages in the calling pipeline</li><li>Untrusted shared library (not configured as &quot;trusted&quot; in Jenkins admin) = runs in sandbox — but sandbox escapes exist; review carefully</li></ul><h2>Pipeline structure risks</h2><h3>Resource management</h3><ul><li>No `timeout(time: X, unit: &#x27;MINUTES&#x27;)` on the pipeline = MEDIUM — a stuck build can run indefinitely, consuming an agent slot</li><li>No `timestamps()` option = LOW — makes debugging timing issues difficult; always enable</li><li>`disableConcurrentBuilds()` removed = HIGH — concurrent builds of the same pipeline can cause race conditions on shared resources (same deployment target, same Docker registry tag)</li><li>`buildDiscarder(logRotator(...))` removed or retention increased significantly = MEDIUM — Jenkins controller disk fills up with build logs and artifacts</li></ul><h3>Parameter risks</h3><ul><li>Pipeline parameter type changed from `choice` to `string` = MEDIUM — removes input validation; users can now enter arbitrary values instead of picking from approved list</li><li>New `booleanParam` defaulting to `true` for a destructive action = HIGH — destructive action is ON by default; operators must actively opt out</li><li>Parameter name changed — all upstream jobs, trigger configurations, and scripts referencing the old parameter name will break silently (pass null/empty instead of failing)</li></ul>
+      </section>
     </main>
+    <script>
+      (() => {
+        if (window.location.pathname.endsWith('/index.html')) {
+          const cleanPath = window.location.pathname.replace(/index\.html$/, '');
+          window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
+        const button = document.getElementById('copy-install');
+        const command = document.getElementById('install-command');
+        if (button && command) {
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(command.textContent || '');
+              button.textContent = 'Copied';
+              button.classList.add('copied');
+            } catch (error) {
+              button.textContent = 'Copy failed';
+            }
+            window.setTimeout(() => {
+              button.textContent = 'Copy install command';
+              button.classList.remove('copied');
+            }, 1500);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
