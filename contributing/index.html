@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contributing Skills | DeployWhisper Skills Registry</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f5efe8;
+        color: #1e2430;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      main {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 56px 24px 80px;
+      }
+      h1 {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        margin-bottom: 12px;
+      }
+      p,
+      li {
+        line-height: 1.7;
+        color: #495465;
+      }
+      section {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(73, 84, 101, 0.12);
+        border-radius: 20px;
+        padding: 24px;
+        margin-top: 18px;
+      }
+      code,
+      pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      pre {
+        background: #111722;
+        color: #edf0f8;
+        padding: 16px;
+        border-radius: 16px;
+        overflow-x: auto;
+      }
+      a {
+        color: #d96b3d;
+        text-decoration: none;
+      }
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #7a8598;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">Contributor guide</div>
+      <h1>Publishing a skill into the registry</h1>
+      <p>
+        The source of truth for built-in skills lives in
+        <a href="https://github.com/deploywhisper/deploywhisper">deploywhisper/deploywhisper</a>.
+        This repository is the published registry and public catalog.
+      </p>
+
+      <section>
+        <h2>Authoring flow</h2>
+        <ol>
+          <li>Create or update <code>skills/&lt;skill&gt;.md</code> in the app repo.</li>
+          <li>Add or update deterministic scenarios in <code>tests/skill-tests/&lt;skill&gt;/</code>.</li>
+          <li>Run manifest lint and the skill harness locally.</li>
+          <li>Open a PR using the dedicated skill template.</li>
+          <li>After merge to <code>main</code>, the publish workflow syncs the registry automatically.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Required validation</h2>
+        <pre><code>deploywhisper skill lint skills/&lt;skill&gt;.md
+deploywhisper skill test &lt;skill&gt;</code></pre>
+      </section>
+
+      <section>
+        <h2>Published artifact shape</h2>
+        <pre><code>skills/
+  terraform/
+    skill.md
+    manifest.json
+    tests/
+      scenarios/</code></pre>
+      </section>
+
+      <section>
+        <h2>Safety rules</h2>
+        <ul>
+          <li>Use synthetic examples only.</li>
+          <li>Do not include real credentials, account ids, or production-only hostnames.</li>
+          <li>Keep manifest ids aligned with the markdown filename stem.</li>
+          <li>Update scenarios whenever guidance changes.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

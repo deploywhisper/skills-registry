@@ -1,0 +1,210 @@
+{
+  "skills": [
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Deep Ansible operational knowledge covering dangerous module classification, idempotency violations, inventory targeting risks, privilege escalation patterns, and handler ordering pitfalls.",
+      "license": "MIT",
+      "name": "ansible",
+      "path": "skills/ansible",
+      "scenario_count": 1,
+      "skill_id": "ansible",
+      "tags": [
+        "ansible",
+        "automation",
+        "iac"
+      ],
+      "test_suite_path": "tests/skill-tests/ansible",
+      "token_budget": 1600,
+      "tool": null,
+      "trigger_content_patterns": [
+        "hosts",
+        "tasks",
+        "roles",
+        "become",
+        "ansible",
+        "playbook",
+        "handlers"
+      ],
+      "triggers": [
+        ".yml",
+        ".yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Deep CloudFormation risk intelligence covering resource replacement detection, deletion policies, drift patterns, stack dependencies, IAM resource risks, and service quota awareness.",
+      "license": "MIT",
+      "name": "cloudformation",
+      "path": "skills/cloudformation",
+      "scenario_count": 1,
+      "skill_id": "cloudformation",
+      "tags": [
+        "cloudformation",
+        "aws",
+        "iac"
+      ],
+      "test_suite_path": "tests/skill-tests/cloudformation",
+      "token_budget": 1500,
+      "tool": null,
+      "trigger_content_patterns": [
+        "AWSTemplateFormatVersion",
+        "Resources",
+        "AWS::",
+        "CloudFormation"
+      ],
+      "triggers": [
+        ".yaml",
+        ".yml",
+        ".json",
+        ".template"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Container image and build risk knowledge covering Dockerfile security patterns, image provenance, multi-stage build risks, compose file analysis, and runtime container security.",
+      "license": "MIT",
+      "name": "docker",
+      "path": "skills/docker",
+      "scenario_count": 1,
+      "skill_id": "docker",
+      "tags": [
+        "docker",
+        "containers",
+        "supply-chain"
+      ],
+      "test_suite_path": "tests/skill-tests/docker",
+      "token_budget": 1200,
+      "tool": null,
+      "trigger_content_patterns": [],
+      "triggers": [
+        "Dockerfile",
+        ".dockerfile",
+        "docker-compose.yml",
+        "docker-compose.yaml",
+        "compose.yml",
+        "compose.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": true,
+      "author": "DeployWhisper",
+      "description": "Git-based change context intelligence covering commit analysis, sensitive file detection, branch risk signals, author patterns, and co-change analysis. This skill is always loaded because Git context enriches every other tool's analysis.",
+      "license": "MIT",
+      "name": "git",
+      "path": "skills/git",
+      "scenario_count": 1,
+      "skill_id": "git",
+      "tags": [
+        "git",
+        "diff",
+        "review"
+      ],
+      "test_suite_path": "tests/skill-tests/git",
+      "token_budget": 1200,
+      "tool": null,
+      "trigger_content_patterns": [],
+      "triggers": [
+        ".diff",
+        ".patch",
+        ".gitdiff"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Deep Jenkins pipeline safety knowledge covering approval gate analysis, credential exposure patterns, agent security, deployment stage risks, and shared library vulnerabilities.",
+      "license": "MIT",
+      "name": "jenkins",
+      "path": "skills/jenkins",
+      "scenario_count": 1,
+      "skill_id": "jenkins",
+      "tags": [
+        "jenkins",
+        "ci-cd",
+        "pipelines"
+      ],
+      "test_suite_path": "tests/skill-tests/jenkins",
+      "token_budget": 1400,
+      "tool": null,
+      "trigger_content_patterns": [
+        "pipeline",
+        "stage",
+        "agent",
+        "steps",
+        "post",
+        "input",
+        "parallel"
+      ],
+      "triggers": [
+        "Jenkinsfile",
+        ".jenkinsfile",
+        "jenkins.groovy"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Deep Kubernetes operational knowledge covering workload safety, rolling update risks, RBAC escalation, network policy gaps, and resource management pitfalls.",
+      "license": "MIT",
+      "name": "kubernetes",
+      "path": "skills/kubernetes",
+      "scenario_count": 1,
+      "skill_id": "kubernetes",
+      "tags": [
+        "kubernetes",
+        "containers",
+        "orchestration"
+      ],
+      "test_suite_path": "tests/skill-tests/kubernetes",
+      "token_budget": 1800,
+      "tool": null,
+      "trigger_content_patterns": [
+        "apiVersion",
+        "kind",
+        "metadata",
+        "spec.containers",
+        "spec.replicas"
+      ],
+      "triggers": [
+        ".yaml",
+        ".yml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Deep Terraform risk knowledge covering provider-specific patterns, state operations, lifecycle rules, and common failure modes across AWS, GCP, and Azure.",
+      "license": "MIT",
+      "name": "terraform",
+      "path": "skills/terraform",
+      "scenario_count": 1,
+      "skill_id": "terraform",
+      "tags": [
+        "terraform",
+        "iac",
+        "infrastructure"
+      ],
+      "test_suite_path": "tests/skill-tests/terraform",
+      "token_budget": 1800,
+      "tool": null,
+      "trigger_content_patterns": [],
+      "triggers": [
+        ".tf",
+        ".tfvars",
+        ".tfvars.json",
+        "terraform-plan.json",
+        "tfplan.json"
+      ],
+      "version": "1.0.0"
+    }
+  ]
+}

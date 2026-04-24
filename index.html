@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DeployWhisper Skills Registry</title>
+    <style>
+      :root {
+        --bg: #f5efe8;
+        --panel: rgba(255,255,255,0.93);
+        --line: rgba(77, 89, 107, 0.12);
+        --text: #1f2530;
+        --muted: #4d596b;
+        --muted-soft: #7a8598;
+        --accent: #d96b3d;
+        --accent-soft: rgba(217, 107, 61, 0.12);
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(217, 107, 61, 0.18), transparent 26%),
+          linear-gradient(180deg, #fbf7f1 0%, var(--bg) 48%, #eee6d9 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      main { max-width: 1180px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1 { font-size: clamp(3rem, 8vw, 5.5rem); line-height: 0.9; margin: 10px 0 16px; letter-spacing: -0.05em; }
+      p { line-height: 1.7; color: var(--muted); }
+      .hero, .skill-row, .controls { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 18px 44px rgba(28, 34, 44, 0.08); }
+      .hero { padding: 32px; margin-bottom: 20px; }
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr); gap: 24px; align-items: end; }
+      .hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .hero-stat { border: 1px solid var(--line); border-radius: 18px; padding: 16px; background: rgba(255,255,255,0.72); }
+      .hero-stat strong { display: block; font-size: 28px; }
+      .hero-stat span { display: block; margin-top: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      .catalog { display: grid; gap: 14px; }
+      .skill-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(200px, auto); gap: 16px; padding: 22px; transition: transform 160ms ease, border-color 160ms ease; }
+      .skill-row:hover { transform: translateY(-2px); border-color: rgba(217, 107, 61, 0.24); }
+      .skill-kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-soft); }
+      .skill-row h2 { margin: 10px 0 8px; font-size: 1.45rem; letter-spacing: -0.03em; }
+      .skill-row a { color: var(--text); text-decoration: none; }
+      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      .chips { display: flex; gap: 8px; flex-wrap: wrap; align-items: start; margin-top: 14px; }
+      .chips span { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.78); }
+      .skill-side { display: grid; align-content: start; gap: 12px; }
+      .metric { border: 1px solid var(--line); border-radius: 18px; padding: 14px; background: rgba(255,255,255,0.74); }
+      .metric strong { display: block; font-size: 22px; color: var(--text); }
+      .metric span { display: block; margin-top: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-soft); }
+      .links { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+      .links a, .install-link { color: var(--accent); text-decoration: none; font-weight: 700; }
+      .controls { display: grid; grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr); gap: 14px; padding: 18px; margin-bottom: 18px; }
+      .controls label { display: grid; gap: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      .controls input, .controls select {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 12px 14px;
+        font: inherit;
+        color: var(--text);
+        background: rgba(255,255,255,0.9);
+      }
+      .controls-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .empty { padding: 22px; border: 1px dashed var(--line); border-radius: 18px; background: rgba(255,255,255,0.58); }
+      .summary { margin-top: 12px; color: var(--muted-soft); font-size: 13px; }
+      @media (max-width: 860px) {
+        .hero-grid, .controls, .controls-row, .skill-row { grid-template-columns: 1fr; }
+        .hero-stats { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 640px) {
+        .hero, .controls, .skill-row { padding: 20px; }
+        .hero-stats { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">DeployWhisper</div>
+            <h1>Skills registry</h1>
+            <p>Published skill manifests, scenarios, and install-ready catalog metadata generated from the main DeployWhisper app repository.</p>
+            <div class="links">
+              <a href="index.json">JSON index</a>
+              <a href="contributing/">Contributor guide</a>
+            </div>
+            <div class="summary">Use the search and tool filter below to scan the catalog quickly before you install.</div>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>7</strong><span>Published skills</span></div>
+            <div class="hero-stat"><strong>7</strong><span>Total scenarios</span></div>
+            <div class="hero-stat"><strong>1</strong><span>Authors</span></div>
+            <div class="hero-stat"><strong>7</strong><span>Tool families</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="controls">
+        <label>Search
+          <input id="catalog-search" type="search" placeholder="Search skills, authors, or tags" />
+        </label>
+        <div class="controls-row">
+          <label>Tool
+            <select id="catalog-tool">
+              <option value="">All tools</option>
+              <option value="ansible">Ansible</option><option value="cloudformation">Cloudformation</option><option value="docker">Docker</option><option value="git">Git</option><option value="jenkins">Jenkins</option><option value="kubernetes">Kubernetes</option><option value="terraform">Terraform</option>
+            </select>
+          </label>
+          <label>Sort
+            <select id="catalog-sort">
+              <option value="title">Name</option>
+              <option value="scenarios">Scenario count</option>
+            </select>
+          </label>
+        </div>
+      </section>
+      <section class="catalog">
+        <article class='skill-row' data-skill-title="Ansible" data-skill-search="ansible DeployWhisper Deep Ansible operational knowledge covering dangerous module classification, idempotency violations, inventory targeting risks, privilege escalation patterns, and handler ordering pitfalls. ansible automation iac" data-skill-tool="ansible" data-skill-scenarios="1"><div class='skill-main'><div class='skill-kicker'>Ansible</div><h2><a href='skills/ansible/'>Ansible</a></h2><p>Deep Ansible operational knowledge covering dangerous module classification, idempotency violations, inventory targeting risks, privilege escalation patterns, and handler ordering pitfalls.</p><div class='meta'>DeployWhisper · v1.0.0 · 1 scenarios</div><div class='chips'><span>ansible</span><span>automation</span><span>iac</span></div></div><div class='skill-side'><div class='metric'><strong>1</strong><span>Scenarios</span></div><div class='metric'><strong>MIT</strong><span>License</span></div><a class='install-link' href='skills/ansible/'>View skill</a></div></article><article class='skill-row' data-skill-title="Cloudformation" data-skill-search="cloudformation DeployWhisper Deep CloudFormation risk intelligence covering resource replacement detection, deletion policies, drift patterns, stack dependencies, IAM resource risks, and service quota awareness. cloudformation aws iac" data-skill-tool="cloudformation" data-skill-scenarios="1"><div class='skill-main'><div class='skill-kicker'>Cloudformation</div><h2><a href='skills/cloudformation/'>Cloudformation</a></h2><p>Deep CloudFormation risk intelligence covering resource replacement detection, deletion policies, drift patterns, stack dependencies, IAM resource risks, and service quota awareness.</p><div class='meta'>DeployWhisper · v1.0.0 · 1 scenarios</div><div class='chips'><span>cloudformation</span><span>aws</span><span>iac</span></div></div><div class='skill-side'><div class='metric'><strong>1</strong><span>Scenarios</span></div><div class='metric'><strong>MIT</strong><span>License</span></div><a class='install-link' href='skills/cloudformation/'>View skill</a></div></article><article class='skill-row' data-skill-title="Docker" data-skill-search="docker DeployWhisper Container image and build risk knowledge covering Dockerfile security patterns, image provenance, multi-stage build risks, compose file analysis, and runtime container security. docker containers supply-chain" data-skill-tool="docker" data-skill-scenarios="1"><div class='skill-main'><div class='skill-kicker'>Docker</div><h2><a href='skills/docker/'>Docker</a></h2><p>Container image and build risk knowledge covering Dockerfile security patterns, image provenance, multi-stage build risks, compose file analysis, and runtime container security.</p><div class='meta'>DeployWhisper · v1.0.0 · 1 scenarios</div><div class='chips'><span>docker</span><span>containers</span><span>supply-chain</span></div></div><div class='skill-side'><div class='metric'><strong>1</strong><span>Scenarios</span></div><div class='metric'><strong>MIT</strong><span>License</span></div><a class='install-link' href='skills/docker/'>View skill</a></div></article><article class='skill-row' data-skill-title="Git" data-skill-search="git DeployWhisper Git-based change context intelligence covering commit analysis, sensitive file detection, branch risk signals, author patterns, and co-change analysis. This skill is always loaded because Git context enriches every other tool's analysis. git diff review" data-skill-tool="git" data-skill-scenarios="1"><div class='skill-main'><div class='skill-kicker'>Git</div><h2><a href='skills/git/'>Git</a></h2><p>Git-based change context intelligence covering commit analysis, sensitive file detection, branch risk signals, author patterns, and co-change analysis. This skill is always loaded because Git context enriches every other tool's analysis.</p><div class='meta'>DeployWhisper · v1.0.0 · 1 scenarios</div><div class='chips'><span>git</span><span>diff</span><span>review</span></div></div><div class='skill-side'><div class='metric'><strong>1</strong><span>Scenarios</span></div><div class='metric'><strong>MIT</strong><span>License</span></div><a class='install-link' href='skills/git/'>View skill</a></div></article><article class='skill-row' data-skill-title="Jenkins" data-skill-search="jenkins DeployWhisper Deep Jenkins pipeline safety knowledge covering approval gate analysis, credential exposure patterns, agent security, deployment stage risks, and shared library vulnerabilities. jenkins ci-cd pipelines" data-skill-tool="jenkins" data-skill-scenarios="1"><div class='skill-main'><div class='skill-kicker'>Jenkins</div><h2><a href='skills/jenkins/'>Jenkins</a></h2><p>Deep Jenkins pipeline safety knowledge covering approval gate analysis, credential exposure patterns, agent security, deployment stage risks, and shared library vulnerabilities.</p><div class='meta'>DeployWhisper · v1.0.0 · 1 scenarios</div><div class='chips'><span>jenkins</span><span>ci-cd</span><span>pipelines</span></div></div><div class='skill-side'><div class='metric'><strong>1</strong><span>Scenarios</span></div><div class='metric'><strong>MIT</strong><span>License</span></div><a class='install-link' href='skills/jenkins/'>View skill</a></div></article><article class='skill-row' data-skill-title="Kubernetes" data-skill-search="kubernetes DeployWhisper Deep Kubernetes operational knowledge covering workload safety, rolling update risks, RBAC escalation, network policy gaps, and resource management pitfalls. kubernetes containers orchestration" data-skill-tool="kubernetes" data-skill-scenarios="1"><div class='skill-main'><div class='skill-kicker'>Kubernetes</div><h2><a href='skills/kubernetes/'>Kubernetes</a></h2><p>Deep Kubernetes operational knowledge covering workload safety, rolling update risks, RBAC escalation, network policy gaps, and resource management pitfalls.</p><div class='meta'>DeployWhisper · v1.0.0 · 1 scenarios</div><div class='chips'><span>kubernetes</span><span>containers</span><span>orchestration</span></div></div><div class='skill-side'><div class='metric'><strong>1</strong><span>Scenarios</span></div><div class='metric'><strong>MIT</strong><span>License</span></div><a class='install-link' href='skills/kubernetes/'>View skill</a></div></article><article class='skill-row' data-skill-title="Terraform" data-skill-search="terraform DeployWhisper Deep Terraform risk knowledge covering provider-specific patterns, state operations, lifecycle rules, and common failure modes across AWS, GCP, and Azure. terraform iac infrastructure" data-skill-tool="terraform" data-skill-scenarios="1"><div class='skill-main'><div class='skill-kicker'>Terraform</div><h2><a href='skills/terraform/'>Terraform</a></h2><p>Deep Terraform risk knowledge covering provider-specific patterns, state operations, lifecycle rules, and common failure modes across AWS, GCP, and Azure.</p><div class='meta'>DeployWhisper · v1.0.0 · 1 scenarios</div><div class='chips'><span>terraform</span><span>iac</span><span>infrastructure</span></div></div><div class='skill-side'><div class='metric'><strong>1</strong><span>Scenarios</span></div><div class='metric'><strong>MIT</strong><span>License</span></div><a class='install-link' href='skills/terraform/'>View skill</a></div></article>
+      </section>
+      <template id="catalog-empty">
+        <div class="empty">No skills match the current search and filter combination.</div>
+      </template>
+    </main>
+    <script type="application/json" id="catalog-data">[{"always_load": false, "author": "DeployWhisper", "description": "Deep Ansible operational knowledge covering dangerous module classification, idempotency violations, inventory targeting risks, privilege escalation patterns, and handler ordering pitfalls.", "license": "MIT", "name": "ansible", "path": "skills/ansible", "scenario_count": 1, "skill_id": "ansible", "tags": ["ansible", "automation", "iac"], "test_suite_path": "tests/skill-tests/ansible", "token_budget": 1600, "tool": null, "trigger_content_patterns": ["hosts", "tasks", "roles", "become", "ansible", "playbook", "handlers"], "triggers": [".yml", ".yaml"], "version": "1.0.0"}, {"always_load": false, "author": "DeployWhisper", "description": "Deep CloudFormation risk intelligence covering resource replacement detection, deletion policies, drift patterns, stack dependencies, IAM resource risks, and service quota awareness.", "license": "MIT", "name": "cloudformation", "path": "skills/cloudformation", "scenario_count": 1, "skill_id": "cloudformation", "tags": ["cloudformation", "aws", "iac"], "test_suite_path": "tests/skill-tests/cloudformation", "token_budget": 1500, "tool": null, "trigger_content_patterns": ["AWSTemplateFormatVersion", "Resources", "AWS::", "CloudFormation"], "triggers": [".yaml", ".yml", ".json", ".template"], "version": "1.0.0"}, {"always_load": false, "author": "DeployWhisper", "description": "Container image and build risk knowledge covering Dockerfile security patterns, image provenance, multi-stage build risks, compose file analysis, and runtime container security.", "license": "MIT", "name": "docker", "path": "skills/docker", "scenario_count": 1, "skill_id": "docker", "tags": ["docker", "containers", "supply-chain"], "test_suite_path": "tests/skill-tests/docker", "token_budget": 1200, "tool": null, "trigger_content_patterns": [], "triggers": ["Dockerfile", ".dockerfile", "docker-compose.yml", "docker-compose.yaml", "compose.yml", "compose.yaml"], "version": "1.0.0"}, {"always_load": true, "author": "DeployWhisper", "description": "Git-based change context intelligence covering commit analysis, sensitive file detection, branch risk signals, author patterns, and co-change analysis. This skill is always loaded because Git context enriches every other tool's analysis.", "license": "MIT", "name": "git", "path": "skills/git", "scenario_count": 1, "skill_id": "git", "tags": ["git", "diff", "review"], "test_suite_path": "tests/skill-tests/git", "token_budget": 1200, "tool": null, "trigger_content_patterns": [], "triggers": [".diff", ".patch", ".gitdiff"], "version": "1.0.0"}, {"always_load": false, "author": "DeployWhisper", "description": "Deep Jenkins pipeline safety knowledge covering approval gate analysis, credential exposure patterns, agent security, deployment stage risks, and shared library vulnerabilities.", "license": "MIT", "name": "jenkins", "path": "skills/jenkins", "scenario_count": 1, "skill_id": "jenkins", "tags": ["jenkins", "ci-cd", "pipelines"], "test_suite_path": "tests/skill-tests/jenkins", "token_budget": 1400, "tool": null, "trigger_content_patterns": ["pipeline", "stage", "agent", "steps", "post", "input", "parallel"], "triggers": ["Jenkinsfile", ".jenkinsfile", "jenkins.groovy"], "version": "1.0.0"}, {"always_load": false, "author": "DeployWhisper", "description": "Deep Kubernetes operational knowledge covering workload safety, rolling update risks, RBAC escalation, network policy gaps, and resource management pitfalls.", "license": "MIT", "name": "kubernetes", "path": "skills/kubernetes", "scenario_count": 1, "skill_id": "kubernetes", "tags": ["kubernetes", "containers", "orchestration"], "test_suite_path": "tests/skill-tests/kubernetes", "token_budget": 1800, "tool": null, "trigger_content_patterns": ["apiVersion", "kind", "metadata", "spec.containers", "spec.replicas"], "triggers": [".yaml", ".yml"], "version": "1.0.0"}, {"always_load": false, "author": "DeployWhisper", "description": "Deep Terraform risk knowledge covering provider-specific patterns, state operations, lifecycle rules, and common failure modes across AWS, GCP, and Azure.", "license": "MIT", "name": "terraform", "path": "skills/terraform", "scenario_count": 1, "skill_id": "terraform", "tags": ["terraform", "iac", "infrastructure"], "test_suite_path": "tests/skill-tests/terraform", "token_budget": 1800, "tool": null, "trigger_content_patterns": [], "triggers": [".tf", ".tfvars", ".tfvars.json", "terraform-plan.json", "tfplan.json"], "version": "1.0.0"}]</script>
+    <script>
+      (() => {
+        const rows = Array.from(document.querySelectorAll('.skill-row'));
+        const searchInput = document.getElementById('catalog-search');
+        const toolSelect = document.getElementById('catalog-tool');
+        const sortSelect = document.getElementById('catalog-sort');
+        const catalog = document.querySelector('.catalog');
+        const emptyTemplate = document.getElementById('catalog-empty');
+
+        const render = () => {
+          const search = (searchInput.value || '').trim().toLowerCase();
+          const tool = (toolSelect.value || '').trim().toLowerCase();
+          const filtered = rows.filter((row) => {
+            const haystack = (row.dataset.skillSearch || '').toLowerCase();
+            const rowTool = (row.dataset.skillTool || '').toLowerCase();
+            const matchesSearch = !search || haystack.includes(search);
+            const matchesTool = !tool || rowTool === tool;
+            row.style.display = matchesSearch && matchesTool ? '' : 'none';
+            return matchesSearch && matchesTool;
+          });
+
+          filtered.sort((left, right) => {
+            if (sortSelect.value === 'scenarios') {
+              return Number(right.dataset.skillScenarios || '0') - Number(left.dataset.skillScenarios || '0');
+            }
+            return (left.dataset.skillTitle || '').localeCompare(right.dataset.skillTitle || '');
+          });
+
+          filtered.forEach((row) => catalog.appendChild(row));
+          const currentEmpty = catalog.querySelector('.empty');
+          if (currentEmpty) currentEmpty.remove();
+          if (filtered.length === 0) {
+            catalog.appendChild(emptyTemplate.content.cloneNode(true));
+          }
+        };
+
+        searchInput.addEventListener('input', render);
+        toolSelect.addEventListener('change', render);
+        sortSelect.addEventListener('change', render);
+        render();
+      })();
+    </script>
+  </body>
+</html>
