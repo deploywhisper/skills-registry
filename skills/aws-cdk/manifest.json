@@ -1,0 +1,26 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "AWS CDK guidance for logical IDs, removal policies, and synth-time environment drift.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "aws-cdk",
+  "tags": [
+    "aws",
+    "cdk",
+    "iac"
+  ],
+  "test_suite_path": "tests/skill-tests/aws-cdk",
+  "token_budget": 1350,
+  "tool": null,
+  "trigger_content_patterns": [
+    "aws-cdk-lib",
+    "PolicyStatement"
+  ],
+  "triggers": [
+    "cdk.json",
+    "cdk.context.json"
+  ],
+  "version": "1.0.0"
+}

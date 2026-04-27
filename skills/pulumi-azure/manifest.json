@@ -1,0 +1,26 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Pulumi Azure guidance for resource-group blast radius, identities, and recovery settings.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "pulumi-azure",
+  "tags": [
+    "pulumi",
+    "azure",
+    "iac"
+  ],
+  "test_suite_path": "tests/skill-tests/pulumi-azure",
+  "token_budget": 1400,
+  "tool": null,
+  "trigger_content_patterns": [
+    "@pulumi/azure-native",
+    "pulumi_azure_native"
+  ],
+  "triggers": [
+    "Pulumi.azure.yaml",
+    "pulumi-azure.ts"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,23 @@
+{
+  "always_load": false,
+  "author": "Infrastructure Guild Community",
+  "description": "Community-authored Terragrunt guidance for include hierarchy drift, dependency output coupling, and run-all blast radius review.",
+  "featured": true,
+  "license": "MIT",
+  "maintainer": "Terragrunt Maintainers",
+  "name": "terragrunt",
+  "tags": [
+    "terragrunt",
+    "terraform",
+    "iac",
+    "community"
+  ],
+  "test_suite_path": "tests/skill-tests/terragrunt",
+  "token_budget": 1400,
+  "tool": "terraform",
+  "trigger_content_patterns": [],
+  "triggers": [
+    "terragrunt.hcl"
+  ],
+  "version": "1.0.0"
+}

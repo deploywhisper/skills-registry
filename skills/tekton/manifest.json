@@ -1,0 +1,26 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Tekton pipeline guidance for credentials, finally tasks, and shared-workspace safety.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "tekton",
+  "tags": [
+    "tekton",
+    "ci-cd",
+    "kubernetes"
+  ],
+  "test_suite_path": "tests/skill-tests/tekton",
+  "token_budget": 1250,
+  "tool": null,
+  "trigger_content_patterns": [
+    "tekton.dev/"
+  ],
+  "triggers": [
+    "pipeline.yaml",
+    "pipelinerun.yaml",
+    "task.yaml"
+  ],
+  "version": "1.0.0"
+}

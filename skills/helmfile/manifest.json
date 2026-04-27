@@ -1,0 +1,23 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Helmfile guidance for environment inheritance, release targeting, and shared values safety.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "helmfile",
+  "tags": [
+    "helmfile",
+    "helm",
+    "gitops"
+  ],
+  "test_suite_path": "tests/skill-tests/helmfile",
+  "token_budget": 1300,
+  "tool": null,
+  "trigger_content_patterns": [],
+  "triggers": [
+    "helmfile.yaml",
+    "helmfile.yml"
+  ],
+  "version": "1.0.0"
+}

@@ -2,7 +2,9 @@
   "always_load": false,
   "author": "DeployWhisper",
   "description": "Deep Terraform risk knowledge covering provider-specific patterns, state operations, lifecycle rules, and common failure modes across AWS, GCP, and Azure.",
+  "featured": false,
   "license": "MIT",
+  "maintainer": null,
   "name": "terraform",
   "tags": [
     "terraform",

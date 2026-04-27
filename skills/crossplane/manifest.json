@@ -1,0 +1,27 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Crossplane composition guidance for control-plane fan-out, provider config, and managed resource safety.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "crossplane",
+  "tags": [
+    "crossplane",
+    "platform",
+    "kubernetes"
+  ],
+  "test_suite_path": "tests/skill-tests/crossplane",
+  "token_budget": 1450,
+  "tool": null,
+  "trigger_content_patterns": [
+    "apiextensions.crossplane.io",
+    "pkg.crossplane.io"
+  ],
+  "triggers": [
+    "composition.yaml",
+    "xrd.yaml",
+    "claim.yaml"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,23 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Kustomize overlay guidance for name transforms, patch targeting, and namespace drift.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "kustomize",
+  "tags": [
+    "kustomize",
+    "kubernetes",
+    "gitops"
+  ],
+  "test_suite_path": "tests/skill-tests/kustomize",
+  "token_budget": 1250,
+  "tool": null,
+  "trigger_content_patterns": [],
+  "triggers": [
+    "kustomization.yaml",
+    "kustomization.yml"
+  ],
+  "version": "1.0.0"
+}

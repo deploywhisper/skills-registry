@@ -2,7 +2,9 @@
   "always_load": false,
   "author": "DeployWhisper",
   "description": "Deep Jenkins pipeline safety knowledge covering approval gate analysis, credential exposure patterns, agent security, deployment stage risks, and shared library vulnerabilities.",
+  "featured": false,
   "license": "MIT",
+  "maintainer": null,
   "name": "jenkins",
   "tags": [
     "jenkins",

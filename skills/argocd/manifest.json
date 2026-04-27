@@ -1,0 +1,26 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "ArgoCD sync and application-set guidance for GitOps delivery changes across shared clusters.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "argocd",
+  "tags": [
+    "argocd",
+    "gitops",
+    "kubernetes"
+  ],
+  "test_suite_path": "tests/skill-tests/argocd",
+  "token_budget": 1350,
+  "tool": null,
+  "trigger_content_patterns": [
+    "argoproj.io/v1alpha1"
+  ],
+  "triggers": [
+    "argocd-application.yaml",
+    "app-of-apps.yaml",
+    "argocd-project.yaml"
+  ],
+  "version": "1.0.0"
+}

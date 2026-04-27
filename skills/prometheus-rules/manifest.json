@@ -1,0 +1,25 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Prometheus rule guidance for alert timing, recording rules, and query-cardinality safety.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "prometheus-rules",
+  "tags": [
+    "prometheus",
+    "monitoring",
+    "alerts"
+  ],
+  "test_suite_path": "tests/skill-tests/prometheus-rules",
+  "token_budget": 1250,
+  "tool": null,
+  "trigger_content_patterns": [
+    "kind: PrometheusRule"
+  ],
+  "triggers": [
+    "prometheus-rules.yaml",
+    "alerting-rules.yaml"
+  ],
+  "version": "1.0.0"
+}

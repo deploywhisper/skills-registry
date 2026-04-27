@@ -1,0 +1,25 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Nginx Ingress controller guidance for routing, annotations, and TLS handling.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "nginx-ingress",
+  "tags": [
+    "nginx",
+    "ingress",
+    "kubernetes"
+  ],
+  "test_suite_path": "tests/skill-tests/nginx-ingress",
+  "token_budget": 1250,
+  "tool": null,
+  "trigger_content_patterns": [
+    "nginx.ingress.kubernetes.io"
+  ],
+  "triggers": [
+    "nginx-ingress.yaml",
+    "ingress-nginx.yaml"
+  ],
+  "version": "1.0.0"
+}

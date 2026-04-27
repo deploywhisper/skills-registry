@@ -2,7 +2,9 @@
   "always_load": false,
   "author": "DeployWhisper",
   "description": "Deep Kubernetes operational knowledge covering workload safety, rolling update risks, RBAC escalation, network policy gaps, and resource management pitfalls.",
+  "featured": false,
   "license": "MIT",
+  "maintainer": null,
   "name": "kubernetes",
   "tags": [
     "kubernetes",

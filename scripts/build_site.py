@@ -11,6 +11,7 @@ import shutil
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = REPO_ROOT / "skills"
 DOCS_DIR = REPO_ROOT / "docs"
+ANALYTICS_DIR = REPO_ROOT / "analytics"
 SITE_DIR = REPO_ROOT / "site"
 
 
@@ -489,6 +490,9 @@ def build_site() -> None:
         json.dumps({"skills": entries}, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+    analytics_path = ANALYTICS_DIR / "skill-popularity.json"
+    if analytics_path.exists():
+        shutil.copy2(analytics_path, SITE_DIR / "skill-popularity.json")
     (SITE_DIR / "index.html").write_text(_render_index(entries), encoding="utf-8")
 
     for entry in entries:

@@ -1,0 +1,25 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Jsonnet guidance for import-graph drift, hidden defaults, and rendered secret exposure.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "jsonnet",
+  "tags": [
+    "jsonnet",
+    "templating",
+    "kubernetes"
+  ],
+  "test_suite_path": "tests/skill-tests/jsonnet",
+  "token_budget": 1200,
+  "tool": null,
+  "trigger_content_patterns": [],
+  "triggers": [
+    "jsonnetfile.json",
+    "config.jsonnet",
+    "main.jsonnet",
+    ".jsonnet"
+  ],
+  "version": "1.0.0"
+}

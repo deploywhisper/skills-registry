@@ -2,7 +2,9 @@
   "always_load": false,
   "author": "DeployWhisper",
   "description": "Deep CloudFormation risk intelligence covering resource replacement detection, deletion policies, drift patterns, stack dependencies, IAM resource risks, and service quota awareness.",
+  "featured": false,
   "license": "MIT",
+  "maintainer": null,
   "name": "cloudformation",
   "tags": [
     "cloudformation",

@@ -1,0 +1,27 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Helm chart rollout guidance covering hooks, chart drift, and value-driven production failures.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "helm",
+  "tags": [
+    "helm",
+    "kubernetes",
+    "gitops"
+  ],
+  "test_suite_path": "tests/skill-tests/helm",
+  "token_budget": 1400,
+  "tool": null,
+  "trigger_content_patterns": [
+    "apiVersion: v2",
+    "dependencies:"
+  ],
+  "triggers": [
+    "Chart.yaml",
+    "values.yaml",
+    "values-production.yaml"
+  ],
+  "version": "1.0.0"
+}

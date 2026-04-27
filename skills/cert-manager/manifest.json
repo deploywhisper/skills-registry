@@ -1,0 +1,26 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Cert-Manager issuance and renewal guidance for issuer, solver, and secret-rotation changes.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "cert-manager",
+  "tags": [
+    "cert-manager",
+    "tls",
+    "kubernetes"
+  ],
+  "test_suite_path": "tests/skill-tests/cert-manager",
+  "token_budget": 1250,
+  "tool": null,
+  "trigger_content_patterns": [
+    "cert-manager.io/"
+  ],
+  "triggers": [
+    "cert-manager-certificate.yaml",
+    "clusterissuer.yaml",
+    "issuer.yaml"
+  ],
+  "version": "1.0.0"
+}

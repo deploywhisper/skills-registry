@@ -1,0 +1,27 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Istio traffic-management and policy guidance for routing, mTLS, and authorization changes.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "istio",
+  "tags": [
+    "istio",
+    "service-mesh",
+    "kubernetes"
+  ],
+  "test_suite_path": "tests/skill-tests/istio",
+  "token_budget": 1350,
+  "tool": null,
+  "trigger_content_patterns": [
+    "networking.istio.io",
+    "security.istio.io"
+  ],
+  "triggers": [
+    "virtualservice.yaml",
+    "destinationrule.yaml",
+    "authorizationpolicy.yaml"
+  ],
+  "version": "1.0.0"
+}

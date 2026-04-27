@@ -1,0 +1,26 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Pulumi GCP guidance for IAM authority, project targeting, and state exposure risks.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "pulumi-gcp",
+  "tags": [
+    "pulumi",
+    "gcp",
+    "iac"
+  ],
+  "test_suite_path": "tests/skill-tests/pulumi-gcp",
+  "token_budget": 1400,
+  "tool": null,
+  "trigger_content_patterns": [
+    "@pulumi/gcp",
+    "pulumi_gcp"
+  ],
+  "triggers": [
+    "Pulumi.gcp.yaml",
+    "pulumi-gcp.ts"
+  ],
+  "version": "1.0.0"
+}

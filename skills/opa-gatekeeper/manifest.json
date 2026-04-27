@@ -1,0 +1,27 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "OPA Gatekeeper policy guidance for deny rollouts, match scope, and inventory sync safety.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "opa-gatekeeper",
+  "tags": [
+    "opa",
+    "gatekeeper",
+    "policy"
+  ],
+  "test_suite_path": "tests/skill-tests/opa-gatekeeper",
+  "token_budget": 1350,
+  "tool": null,
+  "trigger_content_patterns": [
+    "templates.gatekeeper.sh",
+    "constraints.gatekeeper.sh"
+  ],
+  "triggers": [
+    "constrainttemplate.yaml",
+    "constraint.yaml",
+    "gatekeeper-policy.yaml"
+  ],
+  "version": "1.0.0"
+}

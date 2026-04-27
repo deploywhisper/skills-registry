@@ -1,0 +1,27 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Pulumi stack guidance for aliasing, protection, and stateful replacement risks.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "pulumi",
+  "tags": [
+    "pulumi",
+    "iac",
+    "cloud"
+  ],
+  "test_suite_path": "tests/skill-tests/pulumi",
+  "token_budget": 1400,
+  "tool": null,
+  "trigger_content_patterns": [
+    "pulumi config",
+    "@pulumi/"
+  ],
+  "triggers": [
+    "Pulumi.yaml",
+    "Pulumi.dev.yaml",
+    "Pulumi.prod.yaml"
+  ],
+  "version": "1.0.0"
+}

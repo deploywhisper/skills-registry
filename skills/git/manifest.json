@@ -2,7 +2,9 @@
   "always_load": true,
   "author": "DeployWhisper",
   "description": "Git-based change context intelligence covering commit analysis, sensitive file detection, branch risk signals, author patterns, and co-change analysis. This skill is always loaded because Git context enriches every other tool's analysis.",
+  "featured": false,
   "license": "MIT",
+  "maintainer": null,
   "name": "git",
   "tags": [
     "git",

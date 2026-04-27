@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-04-27T00:00:00Z",
+  "skills": {
+    "ansible": {
+      "install_count": 1320,
+      "star_count": 286
+    },
+    "argocd": {
+      "install_count": 921,
+      "star_count": 207
+    },
+    "aws-cdk": {
+      "install_count": 748,
+      "star_count": 156
+    },
+    "bicep": {
+      "install_count": 734,
+      "star_count": 151
+    },
+    "cert-manager": {
+      "install_count": 832,
+      "star_count": 181
+    },
+    "cloudformation": {
+      "install_count": 962,
+      "star_count": 228
+    },
+    "crossplane": {
+      "install_count": 876,
+      "star_count": 198
+    },
+    "datadog-monitors": {
+      "install_count": 775,
+      "star_count": 164
+    },
+    "docker": {
+      "install_count": 1448,
+      "star_count": 332
+    },
+    "flux": {
+      "install_count": 819,
+      "star_count": 176
+    },
+    "git": {
+      "install_count": 1186,
+      "star_count": 267
+    },
+    "helm": {
+      "install_count": 938,
+      "star_count": 214
+    },
+    "helmfile": {
+      "install_count": 672,
+      "star_count": 135
+    },
+    "istio": {
+      "install_count": 861,
+      "star_count": 192
+    },
+    "jenkins": {
+      "install_count": 1094,
+      "star_count": 241
+    },
+    "jsonnet": {
+      "install_count": 641,
+      "star_count": 128
+    },
+    "kubernetes": {
+      "install_count": 1765,
+      "star_count": 403
+    },
+    "kustomize": {
+      "install_count": 688,
+      "star_count": 139
+    },
+    "nginx-ingress": {
+      "install_count": 846,
+      "star_count": 188
+    },
+    "opa-gatekeeper": {
+      "install_count": 789,
+      "star_count": 168
+    },
+    "prometheus-rules": {
+      "install_count": 761,
+      "star_count": 159
+    },
+    "pulumi": {
+      "install_count": 904,
+      "star_count": 203
+    },
+    "pulumi-azure": {
+      "install_count": 703,
+      "star_count": 144
+    },
+    "pulumi-gcp": {
+      "install_count": 719,
+      "star_count": 147
+    },
+    "tanka": {
+      "install_count": 655,
+      "star_count": 131
+    },
+    "tekton": {
+      "install_count": 804,
+      "star_count": 172
+    },
+    "terraform": {
+      "install_count": 1842,
+      "star_count": 418
+    },
+    "terragrunt": {
+      "install_count": 0,
+      "star_count": 0
+    }
+  }
+}

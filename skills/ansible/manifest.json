@@ -2,7 +2,9 @@
   "always_load": false,
   "author": "DeployWhisper",
   "description": "Deep Ansible operational knowledge covering dangerous module classification, idempotency violations, inventory targeting risks, privilege escalation patterns, and handler ordering pitfalls.",
+  "featured": false,
   "license": "MIT",
+  "maintainer": null,
   "name": "ansible",
   "tags": [
     "ansible",

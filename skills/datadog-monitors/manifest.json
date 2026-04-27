@@ -1,0 +1,23 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Datadog monitor guidance for threshold drift, no-data handling, and alert-routing changes.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "datadog-monitors",
+  "tags": [
+    "datadog",
+    "monitoring",
+    "alerts"
+  ],
+  "test_suite_path": "tests/skill-tests/datadog-monitors",
+  "token_budget": 1200,
+  "tool": null,
+  "trigger_content_patterns": [],
+  "triggers": [
+    "datadog-monitor.json",
+    "datadog-monitor.yaml"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,24 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Azure Bicep guidance for deployment modes, secret exposure, and subscription-target drift.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "bicep",
+  "tags": [
+    "azure",
+    "bicep",
+    "iac"
+  ],
+  "test_suite_path": "tests/skill-tests/bicep",
+  "token_budget": 1300,
+  "tool": null,
+  "trigger_content_patterns": [],
+  "triggers": [
+    "main.bicep",
+    "infra.bicep",
+    ".bicep"
+  ],
+  "version": "1.0.0"
+}

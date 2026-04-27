@@ -1,0 +1,26 @@
+{
+  "always_load": false,
+  "author": "DeployWhisper",
+  "description": "Tanka guidance for environment fan-out, cluster targeting, and Jsonnet-driven drift.",
+  "featured": false,
+  "license": "MIT",
+  "maintainer": null,
+  "name": "tanka",
+  "tags": [
+    "tanka",
+    "jsonnet",
+    "kubernetes"
+  ],
+  "test_suite_path": "tests/skill-tests/tanka",
+  "token_budget": 1300,
+  "tool": null,
+  "trigger_content_patterns": [
+    "tanka.dev/v1alpha1",
+    "tk.libsonnet"
+  ],
+  "triggers": [
+    "spec.json",
+    "environments/default/main.jsonnet"
+  ],
+  "version": "1.0.0"
+}
