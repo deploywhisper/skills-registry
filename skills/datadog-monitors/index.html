@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>datadog-monitors | DeployWhisper Skills Registry</title>
+    <link rel="canonical" href="https://deploywhisper.github.io/skills-registry/skills/datadog-monitors/" />
+    <style>
+      :root {
+        --bg: #f5efe8;
+        --panel: rgba(255,255,255,0.93);
+        --line: rgba(77, 89, 107, 0.12);
+        --text: #1f2530;
+        --muted: #4d596b;
+        --muted-soft: #7a8598;
+        --accent: #d96b3d;
+        --accent-soft: rgba(217,107,61,0.12);
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(217,107,61,0.18), transparent 26%),
+          linear-gradient(180deg, #fbf7f1 0%, var(--bg) 48%, #eee6d9 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+      main { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; }
+      .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 44px rgba(28,34,44,0.08); }
+      h1 { font-size: clamp(2.7rem, 6vw, 4rem); margin: 8px 0 14px; letter-spacing: -0.05em; }
+      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      h3 { font-size: 1.1rem; margin-top: 18px; }
+      p, li { line-height: 1.7; color: var(--muted); }
+      code { display: inline-flex; padding: 10px 12px; border-radius: 12px; background: #121823; color: #edf0f8; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+      .meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-soft); }
+      .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+      .tags span, .badge { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; color: var(--muted); background: rgba(255,255,255,0.78); }
+      .badge-official { background: var(--accent-soft); border-color: rgba(217,107,61,0.24); color: var(--accent); font-weight: 700; }
+      a { color: var(--accent); text-decoration: none; font-weight: 700; }
+      .command-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .copy-button {
+        border: 1px solid rgba(217,107,61,0.24);
+        border-radius: 14px;
+        padding: 10px 12px;
+        font: inherit;
+        font-weight: 700;
+        color: var(--accent);
+        background: rgba(255,255,255,0.92);
+        cursor: pointer;
+      }
+      .copy-button.copied { color: #0f7d52; border-color: rgba(15,125,82,0.24); }
+      .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+      .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+      .help-grid ol { margin: 0; padding-left: 18px; }
+      .guidance h2 { margin-top: 24px; }
+      .guidance ul { padding-left: 20px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="panel">
+        <div class="meta">datadog-monitors</div>
+        <div class="hero-badges"><span class='badge badge-official'>Official</span><span class="badge">v1.0.0</span><span class="badge">3 scenarios</span></div>
+        <h1>Datadog Monitors</h1>
+        <p>Datadog monitor guidance for threshold drift, no-data handling, and alert-routing changes.</p>
+        <div class="command-row">
+          <code id="install-command">deploywhisper skill install datadog-monitors</code>
+          <button class="copy-button" id="copy-install">Copy install command</button>
+        </div>
+        <p><a href="../../index.html">Back to catalog</a></p>
+      </section>
+      <section class="panel">
+        <h2>How to use this skill</h2>
+        <div class="help-grid">
+          <div>
+            <strong>1. Install it locally</strong>
+            <p>Use the install command above from any DeployWhisper app checkout that has the installer enabled.</p>
+          </div>
+          <div>
+            <strong>2. Run analysis on matching artifacts</strong>
+            <p>This skill activates when files or content patterns below are detected during analysis.</p>
+          </div>
+          <div>
+            <strong>3. Verify behavior</strong>
+            <p>Published registry data currently includes <strong>3</strong> deterministic scenarios for this skill.</p>
+          </div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>Metadata</h2>
+        <div class="grid">
+          <div><strong>Author</strong><p>DeployWhisper</p></div>
+          <div><strong>Version</strong><p>1.0.0</p></div>
+          <div><strong>License</strong><p>MIT</p></div>
+          <div><strong>Scenarios</strong><p>3</p></div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>Tags</h2>
+        <div class="tags"><span>datadog</span><span>monitoring</span><span>alerts</span></div>
+      </section>
+      <section class="panel">
+        <h2>Triggers</h2>
+        <ul><li>datadog-monitor.json</li><li>datadog-monitor.yaml</li></ul>
+      </section>
+      <section class="panel">
+        <h2>Content patterns</h2>
+        <ul><li>No content pattern hints declared.</li></ul>
+      </section>
+      <section class="panel guidance">
+        <h2>Guidance excerpt</h2>
+        <h2>Critical risk patterns</h2><ul><li>Loosening alert thresholds or evaluation windows can suppress paging on real incidents = HIGH</li><li>Disabling `notify_no_data` on heartbeat-style monitors hides telemetry loss = HIGH</li><li>Removing renotify behavior on sev1 services lengthens incident response = MEDIUM</li><li>Composite monitor dependency changes can invert alert logic for multiple downstream teams = HIGH</li></ul><h2>Review cues</h2><ul><li>Review query logic, no-data handling, and alert routing together for Datadog monitor changes.</li><li>Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.</li></ul>
+      </section>
+    </main>
+    <script>
+      (() => {
+        if (window.location.pathname.endsWith('/index.html')) {
+          const cleanPath = window.location.pathname.replace(/index\.html$/, '');
+          window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
+        const button = document.getElementById('copy-install');
+        const command = document.getElementById('install-command');
+        if (button && command) {
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(command.textContent || '');
+              button.textContent = 'Copied';
+              button.classList.add('copied');
+            } catch (error) {
+              button.textContent = 'Copy failed';
+            }
+            window.setTimeout(() => {
+              button.textContent = 'Copy install command';
+              button.classList.remove('copied');
+            }, 1500);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

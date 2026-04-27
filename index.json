@@ -4,7 +4,9 @@
       "always_load": false,
       "author": "DeployWhisper",
       "description": "Deep Ansible operational knowledge covering dangerous module classification, idempotency violations, inventory targeting risks, privilege escalation patterns, and handler ordering pitfalls.",
+      "featured": false,
       "license": "MIT",
+      "maintainer": null,
       "name": "ansible",
       "path": "skills/ansible",
       "scenario_count": 1,
@@ -37,8 +39,132 @@
     {
       "always_load": false,
       "author": "DeployWhisper",
-      "description": "Deep CloudFormation risk intelligence covering resource replacement detection, deletion policies, drift patterns, stack dependencies, IAM resource risks, and service quota awareness.",
+      "description": "ArgoCD sync and application-set guidance for GitOps delivery changes across shared clusters.",
+      "featured": false,
       "license": "MIT",
+      "maintainer": null,
+      "name": "argocd",
+      "path": "skills/argocd",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- `syncPolicy.automated.prune: true` in shared namespaces can delete resources outside the immediate change set = HIGH\n- `selfHeal: true` can instantly revert emergency hotfixes and confuse incident response = MEDIUM\n- ApplicationSet generator changes fan out to every generated application and can widen blast radius cluster-wide = CRITICAL\n- ArgoCD Project repository or destination allowlists widened to `*` remove key deployment guardrails = HIGH\n\n## Review cues\n\n- Check whether ArgoCD automation settings change the blast radius beyond the named application.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "argocd",
+      "tags": [
+        "argocd",
+        "gitops",
+        "kubernetes"
+      ],
+      "test_suite_path": "tests/skill-tests/argocd",
+      "token_budget": 1350,
+      "tool": null,
+      "tool_label": "argocd",
+      "trigger_content_patterns": [
+        "argoproj.io/v1alpha1"
+      ],
+      "triggers": [
+        "argocd-application.yaml",
+        "app-of-apps.yaml",
+        "argocd-project.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "AWS CDK guidance for logical IDs, removal policies, and synth-time environment drift.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "aws-cdk",
+      "path": "skills/aws-cdk",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Logical ID changes force CloudFormation replacement even when code edits look cosmetic = HIGH\n- `RemovalPolicy.DESTROY` on stateful constructs risks permanent data loss = CRITICAL\n- Context lookups can differ between synth environments and change plans unexpectedly = MEDIUM\n- Broad IAM `PolicyStatement` grants expose entire accounts or regions = HIGH\n\n## Review cues\n\n- Review synthesized logical IDs, removal policies, and IAM grants together for CDK changes.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "aws-cdk",
+      "tags": [
+        "aws",
+        "cdk",
+        "iac"
+      ],
+      "test_suite_path": "tests/skill-tests/aws-cdk",
+      "token_budget": 1350,
+      "tool": null,
+      "tool_label": "aws-cdk",
+      "trigger_content_patterns": [
+        "aws-cdk-lib",
+        "PolicyStatement"
+      ],
+      "triggers": [
+        "cdk.json",
+        "cdk.context.json"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Azure Bicep guidance for deployment modes, secret exposure, and subscription-target drift.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "bicep",
+      "path": "skills/bicep",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Resource or module renames can change deployment identity and trigger destructive replacement = HIGH\n- `existing` resources pointed at the wrong subscription or resource group create broken references = HIGH\n- Key Vault secrets or sensitive outputs emitted as plain strings leak credentials = CRITICAL\n- Complete-mode deployments delete unmanaged resources in the target scope = CRITICAL\n\n## Review cues\n\n- Review Bicep deployment mode, target scope, and secret handling together before approving.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "bicep",
+      "tags": [
+        "azure",
+        "bicep",
+        "iac"
+      ],
+      "test_suite_path": "tests/skill-tests/bicep",
+      "token_budget": 1300,
+      "tool": null,
+      "tool_label": "bicep",
+      "trigger_content_patterns": [],
+      "triggers": [
+        "main.bicep",
+        "infra.bicep",
+        ".bicep"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Cert-Manager issuance and renewal guidance for issuer, solver, and secret-rotation changes.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "cert-manager",
+      "path": "skills/cert-manager",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Replacing a ClusterIssuer can break renewals for every dependent certificate = CRITICAL\n- DNS01 or HTTP01 solver changes can stall issuance and leave certificates to expire = HIGH\n- Secret name rotation without workload coordination causes immediate TLS outages = HIGH\n- Certificate durations outside issuer policy can trigger noisy renewal loops = MEDIUM\n\n## Review cues\n\n- Review issuer scope, solver reachability, and secret consumers together for cert-manager changes.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "cert-manager",
+      "tags": [
+        "cert-manager",
+        "tls",
+        "kubernetes"
+      ],
+      "test_suite_path": "tests/skill-tests/cert-manager",
+      "token_budget": 1250,
+      "tool": null,
+      "tool_label": "cert-manager",
+      "trigger_content_patterns": [
+        "cert-manager.io/"
+      ],
+      "triggers": [
+        "cert-manager-certificate.yaml",
+        "clusterissuer.yaml",
+        "issuer.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Deep CloudFormation risk intelligence covering resource replacement detection, deletion policies, drift patterns, stack dependencies, IAM resource risks, and service quota awareness.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
       "name": "cloudformation",
       "path": "skills/cloudformation",
       "scenario_count": 1,
@@ -70,8 +196,70 @@
     {
       "always_load": false,
       "author": "DeployWhisper",
-      "description": "Container image and build risk knowledge covering Dockerfile security patterns, image provenance, multi-stage build risks, compose file analysis, and runtime container security.",
+      "description": "Crossplane composition guidance for control-plane fan-out, provider config, and managed resource safety.",
+      "featured": false,
       "license": "MIT",
+      "maintainer": null,
+      "name": "crossplane",
+      "path": "skills/crossplane",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Composition patch changes on network or database fields can fan out to every bound claim = CRITICAL\n- Removing fields from an XRD schema breaks existing claims and composition compatibility = HIGH\n- ProviderConfig credential-source changes can orphan reconciles or point resources at the wrong account = HIGH\n- `deletionPolicy: Delete` on managed resources means claim removal deletes cloud assets too = CRITICAL\n\n## Review cues\n\n- Review Crossplane changes as control-plane mutations, not just single-resource YAML edits.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "crossplane",
+      "tags": [
+        "crossplane",
+        "platform",
+        "kubernetes"
+      ],
+      "test_suite_path": "tests/skill-tests/crossplane",
+      "token_budget": 1450,
+      "tool": null,
+      "tool_label": "crossplane",
+      "trigger_content_patterns": [
+        "apiextensions.crossplane.io",
+        "pkg.crossplane.io"
+      ],
+      "triggers": [
+        "composition.yaml",
+        "xrd.yaml",
+        "claim.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Datadog monitor guidance for threshold drift, no-data handling, and alert-routing changes.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "datadog-monitors",
+      "path": "skills/datadog-monitors",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Loosening alert thresholds or evaluation windows can suppress paging on real incidents = HIGH\n- Disabling `notify_no_data` on heartbeat-style monitors hides telemetry loss = HIGH\n- Removing renotify behavior on sev1 services lengthens incident response = MEDIUM\n- Composite monitor dependency changes can invert alert logic for multiple downstream teams = HIGH\n\n## Review cues\n\n- Review query logic, no-data handling, and alert routing together for Datadog monitor changes.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "datadog-monitors",
+      "tags": [
+        "datadog",
+        "monitoring",
+        "alerts"
+      ],
+      "test_suite_path": "tests/skill-tests/datadog-monitors",
+      "token_budget": 1200,
+      "tool": null,
+      "tool_label": "datadog-monitors",
+      "trigger_content_patterns": [],
+      "triggers": [
+        "datadog-monitor.json",
+        "datadog-monitor.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Container image and build risk knowledge covering Dockerfile security patterns, image provenance, multi-stage build risks, compose file analysis, and runtime container security.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
       "name": "docker",
       "path": "skills/docker",
       "scenario_count": 1,
@@ -98,10 +286,45 @@
       "version": "1.0.0"
     },
     {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Flux GitOps guidance for reconciliation, pruning, and source-driven rollout safety.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "flux",
+      "path": "skills/flux",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Flux Kustomization `prune: true` can delete manually-created but still-needed resources = HIGH\n- Suspending or resuming the wrong source blocks reconciliation across multiple environments = HIGH\n- HelmRelease `valuesFrom` changes can silently swap runtime configuration = MEDIUM\n- Aggressive reconcile interval reductions can thundering-herd the control plane = MEDIUM\n\n## Review cues\n\n- Inspect source objects, reconciliation intervals, and pruning behavior together for Flux changes.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "flux",
+      "tags": [
+        "flux",
+        "gitops",
+        "kubernetes"
+      ],
+      "test_suite_path": "tests/skill-tests/flux",
+      "token_budget": 1300,
+      "tool": null,
+      "tool_label": "flux",
+      "trigger_content_patterns": [
+        "source.toolkit.fluxcd.io",
+        "helm.toolkit.fluxcd.io",
+        "kustomize.toolkit.fluxcd.io"
+      ],
+      "triggers": [
+        "gotk-sync.yaml",
+        "flux-kustomization.yaml",
+        "helmrelease.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
       "always_load": true,
       "author": "DeployWhisper",
       "description": "Git-based change context intelligence covering commit analysis, sensitive file detection, branch risk signals, author patterns, and co-change analysis. This skill is always loaded because Git context enriches every other tool's analysis.",
+      "featured": false,
       "license": "MIT",
+      "maintainer": null,
       "name": "git",
       "path": "skills/git",
       "scenario_count": 1,
@@ -127,8 +350,102 @@
     {
       "always_load": false,
       "author": "DeployWhisper",
-      "description": "Deep Jenkins pipeline safety knowledge covering approval gate analysis, credential exposure patterns, agent security, deployment stage risks, and shared library vulnerabilities.",
+      "description": "Helm chart rollout guidance covering hooks, chart drift, and value-driven production failures.",
+      "featured": false,
       "license": "MIT",
+      "maintainer": null,
+      "name": "helm",
+      "path": "skills/helm",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- `post-install` or `pre-upgrade` hooks that mutate shared databases can turn a chart upgrade into a production outage = HIGH\n- Service selector or immutable field changes force resource replacement and can strand live traffic = HIGH\n- Floating chart dependencies or `image.tag: latest` break reproducibility between environments = MEDIUM\n- Scaling critical workloads to zero through values files removes live capacity immediately = HIGH\n\n## Review cues\n\n- Review rendered manifests, hooks, and dependency updates together before approving a Helm rollout.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "helm",
+      "tags": [
+        "helm",
+        "kubernetes",
+        "gitops"
+      ],
+      "test_suite_path": "tests/skill-tests/helm",
+      "token_budget": 1400,
+      "tool": null,
+      "tool_label": "helm",
+      "trigger_content_patterns": [
+        "apiVersion: v2",
+        "dependencies:"
+      ],
+      "triggers": [
+        "Chart.yaml",
+        "values.yaml",
+        "values-production.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Helmfile guidance for environment inheritance, release targeting, and shared values safety.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "helmfile",
+      "path": "skills/helmfile",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Environment value inheritance can change many releases at once = HIGH\n- `helmDefaults.atomic: false` leaves partial failed rollouts behind = MEDIUM\n- Release selector or ordering changes can affect unintended workloads = HIGH\n- Shared secret or values file path changes break multiple environments together = HIGH\n\n## Review cues\n\n- Review environment inheritance and release targeting together before approving Helmfile changes.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "helmfile",
+      "tags": [
+        "helmfile",
+        "helm",
+        "gitops"
+      ],
+      "test_suite_path": "tests/skill-tests/helmfile",
+      "token_budget": 1300,
+      "tool": null,
+      "tool_label": "helmfile",
+      "trigger_content_patterns": [],
+      "triggers": [
+        "helmfile.yaml",
+        "helmfile.yml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Istio traffic-management and policy guidance for routing, mTLS, and authorization changes.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "istio",
+      "path": "skills/istio",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- VirtualService host, match, or gateway rewrites can blackhole traffic across multiple services = CRITICAL\n- DestinationRule TLS mode mismatches commonly surface as cascading 503 errors = HIGH\n- AuthorizationPolicy allow rules with broad principals or namespaces expand lateral access = HIGH\n- PeerAuthentication set to `STRICT` before workloads are mesh-ready can trigger downtime = HIGH\n\n## Review cues\n\n- Review Istio routing and policy changes together because safe config depends on mesh-wide consistency.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "istio",
+      "tags": [
+        "istio",
+        "service-mesh",
+        "kubernetes"
+      ],
+      "test_suite_path": "tests/skill-tests/istio",
+      "token_budget": 1350,
+      "tool": null,
+      "tool_label": "istio",
+      "trigger_content_patterns": [
+        "networking.istio.io",
+        "security.istio.io"
+      ],
+      "triggers": [
+        "virtualservice.yaml",
+        "destinationrule.yaml",
+        "authorizationpolicy.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Deep Jenkins pipeline safety knowledge covering approval gate analysis, credential exposure patterns, agent security, deployment stage risks, and shared library vulnerabilities.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
       "name": "jenkins",
       "path": "skills/jenkins",
       "scenario_count": 1,
@@ -162,8 +479,40 @@
     {
       "always_load": false,
       "author": "DeployWhisper",
-      "description": "Deep Kubernetes operational knowledge covering workload safety, rolling update risks, RBAC escalation, network policy gaps, and resource management pitfalls.",
+      "description": "Jsonnet guidance for import-graph drift, hidden defaults, and rendered secret exposure.",
+      "featured": false,
       "license": "MIT",
+      "maintainer": null,
+      "name": "jsonnet",
+      "path": "skills/jsonnet",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Import graph changes can rewrite many generated manifests indirectly = HIGH\n- Hidden fields or local mixins can mask production-only config drift = MEDIUM\n- Evaluated secret literals leak directly into rendered output and review artifacts = CRITICAL\n- Deleting list elements in generators can remove live permissions or routes = HIGH\n\n## Review cues\n\n- Review rendered output and source-level abstraction changes together for Jsonnet edits.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "jsonnet",
+      "tags": [
+        "jsonnet",
+        "templating",
+        "kubernetes"
+      ],
+      "test_suite_path": "tests/skill-tests/jsonnet",
+      "token_budget": 1200,
+      "tool": null,
+      "tool_label": "jsonnet",
+      "trigger_content_patterns": [],
+      "triggers": [
+        "jsonnetfile.json",
+        "config.jsonnet",
+        "main.jsonnet",
+        ".jsonnet"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Deep Kubernetes operational knowledge covering workload safety, rolling update risks, RBAC escalation, network policy gaps, and resource management pitfalls.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
       "name": "kubernetes",
       "path": "skills/kubernetes",
       "scenario_count": 1,
@@ -194,8 +543,286 @@
     {
       "always_load": false,
       "author": "DeployWhisper",
-      "description": "Deep Terraform risk knowledge covering provider-specific patterns, state operations, lifecycle rules, and common failure modes across AWS, GCP, and Azure.",
+      "description": "Kustomize overlay guidance for name transforms, patch targeting, and namespace drift.",
+      "featured": false,
       "license": "MIT",
+      "maintainer": null,
+      "name": "kustomize",
+      "path": "skills/kustomize",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- NamePrefix or NameSuffix changes rewrite object identities and can break references = HIGH\n- Broad strategic merge or JSON patches can mutate unintended resources = HIGH\n- Image tag swaps without digest pinning reintroduce unreviewed drift = MEDIUM\n- Namespace transformer changes can re-home shared resources unexpectedly = HIGH\n\n## Review cues\n\n- Review Kustomize overlays as graph-wide mutations rather than isolated file edits.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "kustomize",
+      "tags": [
+        "kustomize",
+        "kubernetes",
+        "gitops"
+      ],
+      "test_suite_path": "tests/skill-tests/kustomize",
+      "token_budget": 1250,
+      "tool": null,
+      "tool_label": "kustomize",
+      "trigger_content_patterns": [],
+      "triggers": [
+        "kustomization.yaml",
+        "kustomization.yml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Nginx Ingress controller guidance for routing, annotations, and TLS handling.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "nginx-ingress",
+      "path": "skills/nginx-ingress",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- `nginx.ingress.kubernetes.io/configuration-snippet` can inject unsafe directives and bypass shared controls = HIGH\n- Path regex or default-backend rewrites can shadow unrelated routes and break many services = HIGH\n- Missing body-size or timeout tuning on large uploads creates production-only failures = MEDIUM\n- TLS host and secret mismatches cause certificate fallback and immediate client trust errors = HIGH\n\n## Review cues\n\n- Check Nginx annotations and route precedence, not just the host/path diff, before approving.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "nginx-ingress",
+      "tags": [
+        "nginx",
+        "ingress",
+        "kubernetes"
+      ],
+      "test_suite_path": "tests/skill-tests/nginx-ingress",
+      "token_budget": 1250,
+      "tool": null,
+      "tool_label": "nginx-ingress",
+      "trigger_content_patterns": [
+        "nginx.ingress.kubernetes.io"
+      ],
+      "triggers": [
+        "nginx-ingress.yaml",
+        "ingress-nginx.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "OPA Gatekeeper policy guidance for deny rollouts, match scope, and inventory sync safety.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "opa-gatekeeper",
+      "path": "skills/opa-gatekeeper",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- ConstraintTemplate or rego errors can remove enforcement when audit failures are ignored = HIGH\n- Broad match exclusions take critical namespaces out of policy coverage = HIGH\n- Rolling out deny policies without dry-run validation can block deployments cluster-wide = CRITICAL\n- Sync config omissions mean policies evaluate stale inventory and create false confidence = MEDIUM\n\n## Review cues\n\n- Review Gatekeeper changes as policy rollouts with cluster-wide blast radius, not isolated YAML edits.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "opa-gatekeeper",
+      "tags": [
+        "opa",
+        "gatekeeper",
+        "policy"
+      ],
+      "test_suite_path": "tests/skill-tests/opa-gatekeeper",
+      "token_budget": 1350,
+      "tool": null,
+      "tool_label": "opa-gatekeeper",
+      "trigger_content_patterns": [
+        "templates.gatekeeper.sh",
+        "constraints.gatekeeper.sh"
+      ],
+      "triggers": [
+        "constrainttemplate.yaml",
+        "constraint.yaml",
+        "gatekeeper-policy.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Prometheus rule guidance for alert timing, recording rules, and query-cardinality safety.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "prometheus-rules",
+      "path": "skills/prometheus-rules",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Extending alert `for:` windows delays paging and can hide fast-burning incidents = HIGH\n- Recording rule renames break downstream dashboards, alerts, and SLO calculations = MEDIUM\n- Unbounded joins or label expansions can overload Prometheus and remote-write pipelines = HIGH\n- Severity label downgrades reduce response urgency even when the underlying blast radius is unchanged = HIGH\n\n## Review cues\n\n- Review Prometheus rule semantics, cardinality impact, and downstream consumers before merging.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "prometheus-rules",
+      "tags": [
+        "prometheus",
+        "monitoring",
+        "alerts"
+      ],
+      "test_suite_path": "tests/skill-tests/prometheus-rules",
+      "token_budget": 1250,
+      "tool": null,
+      "tool_label": "prometheus-rules",
+      "trigger_content_patterns": [
+        "kind: PrometheusRule"
+      ],
+      "triggers": [
+        "prometheus-rules.yaml",
+        "alerting-rules.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Pulumi stack guidance for aliasing, protection, and stateful replacement risks.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "pulumi",
+      "path": "skills/pulumi",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Resource renames without aliases force replacements and can recreate live infrastructure unexpectedly = HIGH\n- Turning `protect` off on databases, buckets, or queues removes a key deletion backstop = HIGH\n- Promoting secret config into plain-text stack values leaks sensitive data into state and logs = CRITICAL\n- Preview output can miss provider-computed replacements, so review replacement plans conservatively = MEDIUM\n\n## Review cues\n\n- Look for alias coverage, stack-secret handling, and protection changes before approving Pulumi updates.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "pulumi",
+      "tags": [
+        "pulumi",
+        "iac",
+        "cloud"
+      ],
+      "test_suite_path": "tests/skill-tests/pulumi",
+      "token_budget": 1400,
+      "tool": null,
+      "tool_label": "pulumi",
+      "trigger_content_patterns": [
+        "pulumi config",
+        "@pulumi/"
+      ],
+      "triggers": [
+        "Pulumi.yaml",
+        "Pulumi.dev.yaml",
+        "Pulumi.prod.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Pulumi Azure guidance for resource-group blast radius, identities, and recovery settings.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "pulumi-azure",
+      "path": "skills/pulumi-azure",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Resource group replacement cascades to every contained Azure resource = CRITICAL\n- Managed identity or role-assignment drift can break runtime access immediately = HIGH\n- Key Vault soft-delete or purge-protection changes alter recovery guarantees = HIGH\n- Regional SKU changes can require destructive replacement instead of in-place updates = HIGH\n\n## Review cues\n\n- Review resource-group scope, identity changes, and recovery settings together for Pulumi Azure updates.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "pulumi-azure",
+      "tags": [
+        "pulumi",
+        "azure",
+        "iac"
+      ],
+      "test_suite_path": "tests/skill-tests/pulumi-azure",
+      "token_budget": 1400,
+      "tool": null,
+      "tool_label": "pulumi-azure",
+      "trigger_content_patterns": [
+        "@pulumi/azure-native",
+        "pulumi_azure_native"
+      ],
+      "triggers": [
+        "Pulumi.azure.yaml",
+        "pulumi-azure.ts"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Pulumi GCP guidance for IAM authority, project targeting, and state exposure risks.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "pulumi-gcp",
+      "path": "skills/pulumi-gcp",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Authoritative IAM bindings can remove required members and lock out workloads or operators = HIGH\n- Cloud SQL or GKE replacements from region or name drift introduce avoidable downtime = HIGH\n- Project or folder target changes move blast radius to the wrong tenant = CRITICAL\n- Decrypting secrets into plain config or logs exposes sensitive state = CRITICAL\n\n## Review cues\n\n- Review project targeting, IAM authority, and replacement indicators together for Pulumi GCP changes.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "pulumi-gcp",
+      "tags": [
+        "pulumi",
+        "gcp",
+        "iac"
+      ],
+      "test_suite_path": "tests/skill-tests/pulumi-gcp",
+      "token_budget": 1400,
+      "tool": null,
+      "tool_label": "pulumi-gcp",
+      "trigger_content_patterns": [
+        "@pulumi/gcp",
+        "pulumi_gcp"
+      ],
+      "triggers": [
+        "Pulumi.gcp.yaml",
+        "pulumi-gcp.ts"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Tanka guidance for environment fan-out, cluster targeting, and Jsonnet-driven drift.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "tanka",
+      "path": "skills/tanka",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Environment-level library changes fan out to every rendered object = HIGH\n- Server-side apply or force behavior can overwrite fields owned by other controllers = HIGH\n- Namespace or environment target drift deploys to the wrong cluster = CRITICAL\n- Hidden Jsonnet defaults make destructive deletions hard to spot in review = MEDIUM\n\n## Review cues\n\n- Review Tanka environment targets and rendered diff shape together before merge.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "tanka",
+      "tags": [
+        "tanka",
+        "jsonnet",
+        "kubernetes"
+      ],
+      "test_suite_path": "tests/skill-tests/tanka",
+      "token_budget": 1300,
+      "tool": null,
+      "tool_label": "tanka",
+      "trigger_content_patterns": [
+        "tanka.dev/v1alpha1",
+        "tk.libsonnet"
+      ],
+      "triggers": [
+        "spec.json",
+        "environments/default/main.jsonnet"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Tekton pipeline guidance for credentials, finally tasks, and shared-workspace safety.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
+      "name": "tekton",
+      "path": "skills/tekton",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- Mounting shared credentials into every task leaks secrets far beyond the intended build step = HIGH\n- Changes to `finally` tasks can skip cleanup, approval, or promotion gates = HIGH\n- Shared PVC workspaces across concurrent runs create artifact races and nondeterministic builds = MEDIUM\n- Floating task image tags change pipeline behavior outside code review = HIGH\n\n## Review cues\n\n- Review credential scope, shared workspace usage, and finally-task behavior together for Tekton changes.\n- Prefer deterministic roll-forward or rollback steps over hand-wavy remediation notes.",
+      "skill_id": "tekton",
+      "tags": [
+        "tekton",
+        "ci-cd",
+        "kubernetes"
+      ],
+      "test_suite_path": "tests/skill-tests/tekton",
+      "token_budget": 1250,
+      "tool": null,
+      "tool_label": "tekton",
+      "trigger_content_patterns": [
+        "tekton.dev/"
+      ],
+      "triggers": [
+        "pipeline.yaml",
+        "pipelinerun.yaml",
+        "task.yaml"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "DeployWhisper",
+      "description": "Deep Terraform risk knowledge covering provider-specific patterns, state operations, lifecycle rules, and common failure modes across AWS, GCP, and Azure.",
+      "featured": false,
+      "license": "MIT",
+      "maintainer": null,
       "name": "terraform",
       "path": "skills/terraform",
       "scenario_count": 1,
@@ -217,6 +844,34 @@
         ".tfvars.json",
         "terraform-plan.json",
         "tfplan.json"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "always_load": false,
+      "author": "Infrastructure Guild Community",
+      "description": "Community-authored Terragrunt guidance for include hierarchy drift, dependency output coupling, and run-all blast radius review.",
+      "featured": true,
+      "license": "MIT",
+      "maintainer": "Terragrunt Maintainers",
+      "name": "terragrunt",
+      "path": "skills/terragrunt",
+      "scenario_count": 3,
+      "skill_body": "## Critical risk patterns\n\n- `run-all apply` or root include changes can fan out across many stacks at once = HIGH\n- Dependency output contract changes can break downstream stacks even when the local diff looks small = HIGH\n- Backend, remote state, or generate block changes can orphan state or rewrite provider configuration = CRITICAL\n- Deep include hierarchy overrides can silently change locals, inputs, or hooks for every child module = HIGH\n\n## Review cues\n\n- Review parent includes, dependency blocks, and generated provider files together before approving Terragrunt changes.\n- Prefer stack-by-stack blast-radius notes over generic Terraform advice when the change alters shared Terragrunt scaffolding.",
+      "skill_id": "terragrunt",
+      "tags": [
+        "terragrunt",
+        "terraform",
+        "iac",
+        "community"
+      ],
+      "test_suite_path": "tests/skill-tests/terragrunt",
+      "token_budget": 1400,
+      "tool": "terraform",
+      "tool_label": "terraform",
+      "trigger_content_patterns": [],
+      "triggers": [
+        "terragrunt.hcl"
       ],
       "version": "1.0.0"
     }
